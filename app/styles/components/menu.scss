@@ -1,0 +1,15 @@
+.menu{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(375px, -375px);
+    text-align: right;
+    opacity: 0.5;
+    transition: opacity 300ms ease-in-out;
+    &:hover{
+        opacity: 1;
+    }
+    &__item{
+        margin: 0 0 20px;
+    }
+}

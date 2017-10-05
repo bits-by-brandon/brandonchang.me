@@ -1,0 +1,12 @@
+.sidebar{
+    background-color: white;
+    transform: translate(-502px ,200px) rotate(-90deg);
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    li{
+        display: inline-block;
+        margin: 0 8px;
+        color: black;
+    }
+}

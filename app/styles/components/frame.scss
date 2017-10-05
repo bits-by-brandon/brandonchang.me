@@ -1,0 +1,28 @@
+@import "../colors";
+
+.frame{
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    &__square{
+        display: block;
+        position: fixed;
+        width: 700px;
+        height: 80vh;
+        left: 50%;
+        top: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        border: 2px solid $dark-grey;
+        overflow: hidden;
+        transition: background-color 300ms ease-in-out;
+        background-color: rgba(255, 255, 255, 0);
+        &.on{
+            background-color: rgba($dark-grey, 0.95);
+            .repl-console__text{
+                color: white;
+            }
+        }
+    }
+}

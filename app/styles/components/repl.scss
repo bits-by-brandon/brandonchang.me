@@ -1,0 +1,29 @@
+@import '../colors';
+
+.repl-console{
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    padding: 50px;
+    &__text{
+        cursor: pointer;
+        font-weight: lighter;
+        letter-spacing: 1px;
+        line-height: 1.4;
+    }
+    .cursor{
+        font-weight: bolder;
+    }
+}
+
+.line{
+    display: block;
+    line-height: 1.4;
+    &.error{
+        color: $red;
+    }
+    &.response{
+        color: $blue;
+    }
+}
