@@ -7,4 +7,4 @@ import App from './components/container/App';
 ReactDOM.render(
     <App/>,
     document.getElementById('main')
-)
+);
