@@ -1,4 +1,4 @@
-function gridLogic(){
+function grid(){
 
     let gridContext = null,
         width = null,
@@ -97,4 +97,4 @@ function gridLogic(){
     }
 }
 
-export default gridLogic();
+export default grid();

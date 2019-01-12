@@ -1,9 +1,10 @@
 //React Component: Work List
 //============================
 
+import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import WorkItem from '../presentation/WorkItem';
-import '../../styles/sections/work-list.scss';
+import 'Styles/sections/work-list.scss';
 
 class workList extends Component {
     render() {
@@ -25,12 +26,12 @@ class workList extends Component {
 }
 
 workList.propTypes = {
-    items: React.PropTypes.arrayOf(
-        React.PropTypes.shape({
-            header: React.PropTypes.string.isRequired,
-            subheader: React.PropTypes.string.isRequired,
-            imageUrl: React.PropTypes.string.isRequired,
-            iconUrl: React.PropTypes.string.isRequired
+    items: PropTypes.arrayOf(
+        PropTypes.shape({
+            header: PropTypes.string.isRequired,
+            subheader: PropTypes.string.isRequired,
+            imageUrl: PropTypes.string.isRequired,
+            iconUrl: PropTypes.string.isRequired
         })
     )
 };

@@ -1,39 +1,59 @@
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    mode: 'development',
+    devtool: "cheap-eval-source-map",
+    devServer: {
+        contentBase: path.join(__dirname, 'public'),
+        compress: true,
+        port: 9000,
+        hot: true,
+    },
     entry: {
-        main: getEntrySources([
-            './app/entry.js'
-        ])
+        main: path.join(__dirname, 'src', 'entry.js'),
     },
     output: {
-        filename: 'public/[name].js'
+        path: path.resolve(__dirname, 'public'),
+        filename: '[name].js'
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
-                loaders: ['babel'],
+                loaders: ['babel-loader'],
                 exclude: /node_modules/,
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('css!sass')
+                use: [
+                    "style-loader",
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "sass-loader"
+                ]
             }
         ]
     },
+    resolve: {
+        alias: {
+            Styles: path.resolve(__dirname, 'src/styles/'),
+        }
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('public/style.css', {
-            allChunks: true
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css"
         }),
+        new HtmlWebpackPlugin({
+            inject: false,
+            hash: true,
+            template: './src/index.html',
+            filename: 'index.html'
+        })
     ]
-}
+};
 
-function getEntrySources(sources){
-    if(process.env.NODE_ENV !== 'production'){
-        sources.push('webpack-dev-server/client?http://localhost:8080');
-    }
-    return sources;
-}

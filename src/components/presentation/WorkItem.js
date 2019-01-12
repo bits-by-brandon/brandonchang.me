@@ -1,8 +1,9 @@
 //React Component: WorkItem
 //============================
 
+import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import '../../styles/components/work-item.scss';
+import 'Styles/components/work-item.scss';
 
 class workItem extends Component {
 
@@ -31,10 +32,10 @@ class workItem extends Component {
 }
 
 workItem.propTypes = {
-    header: React.PropTypes.string.isRequired,
-    subheader: React.PropTypes.string.isRequired,
-    imageUrl: React.PropTypes.string.isRequired,
-    iconUrl: React.PropTypes.string.isRequired
+    header: PropTypes.string.isRequired,
+    subheader: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    iconUrl: PropTypes.string.isRequired
 };
 workItem.defaultProps = {
     header: 'Header',

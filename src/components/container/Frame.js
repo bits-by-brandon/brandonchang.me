@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import Repl from '../presentation/Repl';
 import Menu from './Menu';
-import '../../styles/components/frame.scss';
+import 'Styles/components/frame.scss';
 
 class frame extends Component {
     constructor(props) {
@@ -29,8 +29,8 @@ class frame extends Component {
                     }}
                 >
                     <Repl
-                        initialText="brandon<br />chang"
-                        blinkRate={1000}
+                        initialText="brandon_chang"
+                        blinkRate={800}
                         handleEnter={(isEmpty) => {
                             this.setState({
                                 consoleOn: isEmpty
@@ -41,18 +41,10 @@ class frame extends Component {
                 </div>
                 <Menu
                     menuItems={[
-                        {
-                            label: 'work',
-                            slug: 'work'
-                        },
-                        {
-                            label: 'about',
-                            slug: 'about'
-                        },
-                        {
-                            label: 'contact',
-                            slug: 'contact'
-                        },
+                        { label: 'work', slug: 'work' },
+                        { label: 'about', slug: 'about' },
+                        { label: 'skills', slug: 'skills' },
+                        { label: 'contact', slug: 'contact' },
                     ]}
                 />
             </div>

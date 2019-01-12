@@ -1,8 +1,9 @@
 //React Component: Sidebar
 //============================
 
+import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import '../../styles/components/sidebar.scss';
+import 'Styles/components/sidebar.scss';
 
 class sidebar extends Component {
     render() {
@@ -19,8 +20,8 @@ class sidebar extends Component {
 }
 
 sidebar.propTypes = {
-    textList: React.PropTypes.arrayOf(
-        React.PropTypes.string
+    textList: PropTypes.arrayOf(
+        PropTypes.string
     ).isRequired
 };
 

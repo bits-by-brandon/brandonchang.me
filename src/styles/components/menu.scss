@@ -1,4 +1,4 @@
-.menu{
+.menu {
     position: fixed;
     left: 50%;
     top: 50%;
@@ -11,5 +11,6 @@
     }
     &__item{
         margin: 0 0 20px;
+        font-size: 12px;
     }
 }

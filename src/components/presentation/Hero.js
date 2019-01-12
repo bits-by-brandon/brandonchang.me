@@ -6,6 +6,7 @@ import React, {Component} from 'react';
 class hero extends Component {
     render() {
         return (
+            <div>Hero</div>
         );
     }
 }

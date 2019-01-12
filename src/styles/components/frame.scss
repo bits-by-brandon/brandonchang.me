@@ -14,14 +14,14 @@
         top: 50%;
         pointer-events: none;
         transform: translate(-50%, -50%);
-        border: 2px solid $dark-grey;
+        border: 2px solid white;
         overflow: hidden;
         transition: background-color 300ms ease-in-out;
         background-color: rgba(255, 255, 255, 0);
         &.on{
-            background-color: rgba($dark-grey, 0.95);
+            background-color: white;
             .repl-console__text{
-                color: white;
+                color: $dark-grey;
             }
         }
     }

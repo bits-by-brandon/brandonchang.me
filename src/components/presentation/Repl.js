@@ -2,14 +2,16 @@
 //============================
 
 import React, {Component} from 'react';
-import {breakLine} from '../../scripts/utils';
-import {handleSubmit} from '../../scripts/replLogic';
-import '../../styles/components/repl.scss';
+import PropTypes from 'prop-types';
+import {handleSubmit} from '../../scripts/repl';
+import 'Styles/components/repl.scss';
 
 class repl extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            inputHistory: [],
+            inputHistoryIndex: 0,
             hideCursor: false,
             cursorInterval: null,
             userInput: '',
@@ -42,34 +44,61 @@ class repl extends Component {
 
     handleKeyPress(e) {
         let key = e.key.toLowerCase();
-        if (key == "r" && e.metaKey) return;
+        if (key === "r" && e.metaKey) return;
         switch (key) {
             case "control":
             case "shift":
-            case "capsLock":
+            case "capslock":
             case "alt":
             case "meta":
-            case "contextMenu":
+            case "contextmenu":
             case "tab":
-            case "arrowRight":
-            case "arrowLeft":
-            case "arrowUp":
-            case "arrowDown":
+            case "arrowright":
+            case "arrowleft":
                 return;
+
+            case "arrowdown":
+                e.preventDefault();
+                this.setState(prevState => {
+                    if(prevState.index === 0) { return; }
+                    let indexCandidate = prevState.inputHistoryIndex - 1;
+                    if(indexCandidate < 1) { indexCandidate = 1; }
+                    return {
+                        inputHistoryIndex: indexCandidate,
+                        userInput: prevState.inputHistory[prevState.inputHistory.length - indexCandidate],
+                    };
+                });
+                break;
+
+            case "arrowup":
+                e.preventDefault();
+                this.setState(prevState => {
+                    let indexCandidate = prevState.inputHistoryIndex + 1;
+                    if(indexCandidate > prevState.inputHistory.length) {
+                        indexCandidate = prevState.inputHistory.length;
+                    }
+                    return {
+                        inputHistoryIndex: indexCandidate,
+                        userInput: prevState.inputHistory[prevState.inputHistory.length - indexCandidate],
+                    };
+                });
+                break;
 
             case "delete":
             case "backspace":
                 e.preventDefault();
-                this.setState((prevState) => {
-                    return {
-                        userInput: prevState.userInput.substring(0, prevState.userInput.length - 1)
-                    }
-                });
+                this.setState(prevState => ( {
+                    userInput: prevState.userInput.substring(0, prevState.userInput.length - 1)
+                }));
                 break;
 
             case "enter":
                 //The entered command matched a term
                 e.preventDefault();
+
+                // Return if nothing is input
+                if(this.state.userInput.length === 0) { return }
+
                 let newState = handleSubmit(this.state);
                 this.setState(newState);
                 //Scrolls content to bottom and sends state of console
@@ -90,26 +119,28 @@ class repl extends Component {
     }
 
     render() {
+        const {console, userInput, hideCursor} = this.state;
+        const {initialText} = this.props;
         return (
             <div className="repl-console">
                 <pre>
                 <h1 className="repl-console__text">
-                    {breakLine(this.props.initialText)}
+                    {initialText}<br/>
                     <span>
-                        {this.state.console.map((line, index) => {
+                        {console.map((line, index) => {
                             let classes = ['line', ...line.type];
                             return <span key={index} className={classes.join(' ')}>{line.payload}</span>
                         })}
-                        {(this.state.userInput.length > 0 || this.state.console.length > 0)
-                            ? '>'
-                            : ''
+                        {(userInput.length > 0 || console.length > 0)
+                            ? '> '
+                            : '> '
                         }
-                        {this.state.userInput}
+                        {userInput}
                     </span>
                     <span
                         className="cursor"
                         style={{
-                            opacity: this.state.hideCursor ? '0' : '1'
+                            opacity: hideCursor ? '0' : '1'
                         }}
                     >_</span>
                 </h1>
@@ -120,9 +151,9 @@ class repl extends Component {
 }
 
 repl.propTypes = {
-    initialText: React.PropTypes.string.isRequired,
-    blinkRate: React.PropTypes.number,
-    handleEnter: React.PropTypes.func
+    initialText: PropTypes.string,
+    blinkRate: PropTypes.number,
+    handleEnter: PropTypes.func
 };
 repl.defaultProps = {
     initialText: 'brandon chang',

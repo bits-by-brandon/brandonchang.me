@@ -1,24 +1,19 @@
-//React Component: Menu
-//============================
-
+import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import '../../styles/components/menu.scss';
+import { Link } from "react-router-dom";
+import 'Styles/components/menu.scss';
 
 class menu extends Component {
     render() {
         return (
             <ul className="menu">
-                <li className="menu__item grid"></li>
                 {
                     this.props.menuItems.map((menuItem, index)=>{
                         return (
-                            <li
-                                className="menu__item"
-                                key={index}
-                            >
-                                <a href={"/" + menuItem.slug} >
-                                    <h4>{menuItem.label}</h4>
-                                </a>
+                            <li className="menu__item" key={index}>
+                                <Link to={"/" + menuItem.slug} >
+                                    {menuItem.label}
+                                </Link>
                             </li>
                         )
                     })
@@ -29,10 +24,10 @@ class menu extends Component {
 }
 
 menu.propTypes = {
-    menuItems: React.PropTypes.arrayOf(
-        React.PropTypes.shape({
-            label: React.PropTypes.string.isRequired,
-            slug: React.PropTypes.string.isRequired,
+    menuItems: PropTypes.arrayOf(
+        PropTypes.shape({
+            label: PropTypes.string.isRequired,
+            slug: PropTypes.string.isRequired,
         })
     )
 };
@@ -50,6 +45,6 @@ menu.defaultProps = {
             label: 'contact',
             slug: 'contact'
         },
-    ]}
+    ]};
 
 export default menu;

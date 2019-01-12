@@ -2,18 +2,13 @@
 //============================
 
 import React, {Component} from 'react';
-import {
-    BrowserRouter as Router,
-    Route,
-    Link
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Frame from './Frame';
-import Grid from '../presentation/Dotgrid';
 import Sidebar from '../presentation/Sidebar';
 import WorkList from './WorkList';
 
-import '../../styles/app.scss';
-import '../../styles/sections/hero.scss';
+import 'Styles/app.scss';
+import 'Styles/sections/hero.scss';
 
 class app extends Component {
 
@@ -23,13 +18,7 @@ class app extends Component {
                 <div className="main">
                     <Frame/>
                     <div className="home hero">
-                        <Sidebar
-                            textList={[
-                                'design',
-                                'develop',
-                                'hack'
-                            ]}
-                        />
+                        <Sidebar textList={[ 'design', 'develop', 'hack' ]} />
                     </div>
                     <WorkList
                         items={[
@@ -41,7 +30,6 @@ class app extends Component {
                             }
                         ]}
                     />
-                    <Grid/>
                 </div>
             </Router>
         );
