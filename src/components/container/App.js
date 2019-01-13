@@ -10,6 +10,9 @@ import WorkList from './WorkList';
 import 'Styles/app.scss';
 import 'Styles/sections/hero.scss';
 
+import '../../scripts/dotGrid';
+import 'Styles/components/dotgrid.scss';
+
 class app extends Component {
 
     render() {

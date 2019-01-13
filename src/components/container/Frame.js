@@ -6,7 +6,7 @@ import Repl from '../presentation/Repl';
 import Menu from './Menu';
 import 'Styles/components/frame.scss';
 
-class frame extends Component {
+class Frame extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -52,7 +52,7 @@ class frame extends Component {
     }
 }
 
-frame.propTypes = {};
-frame.defaultProps = {};
+Frame.propTypes = {};
+Frame.defaultProps = {};
 
-export default frame;
+export default Frame;

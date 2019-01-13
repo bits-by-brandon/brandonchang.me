@@ -8,15 +8,11 @@ class menu extends Component {
         return (
             <ul className="menu">
                 {
-                    this.props.menuItems.map((menuItem, index)=>{
-                        return (
-                            <li className="menu__item" key={index}>
-                                <Link to={"/" + menuItem.slug} >
-                                    {menuItem.label}
-                                </Link>
-                            </li>
-                        )
-                    })
+                    this.props.menuItems.map((menuItem, index) =>
+                         <li className="menu__item" key={index}>
+                            <Link to={"/" + menuItem.slug}>{menuItem.label}</Link>
+                        </li>
+                    )
                 }
             </ul>
         );

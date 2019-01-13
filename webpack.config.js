@@ -11,6 +11,7 @@ module.exports = {
         compress: true,
         port: 9000,
         hot: true,
+        inline: true,
     },
     entry: {
         main: path.join(__dirname, 'src', 'entry.js'),
@@ -43,7 +44,6 @@ module.exports = {
         }
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
             filename: "[name].css",
             chunkFilename: "[id].css"
