@@ -1,8 +1,11 @@
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import * as commands from './commands';
-import {actionTypes} from '../models/Command';
+import {commandTypes} from '../models/Command';
 
 const commandArray = Object.keys(commands).map(commandName => commands[commandName]);
 const tabSpace = 8;
+const prompt = '> ';
 
 export function handleSubmit(currentState) {
     const input = currentState.userInput;
@@ -13,14 +16,14 @@ export function handleSubmit(currentState) {
     });
 
     if (currentCommand && typeof currentCommand === "object") {
-        switch (currentCommand.actionType) {
-            case actionTypes.PRINT_OUTPUT:
+        switch (currentCommand.commandType) {
+            case commandTypes.PRINT_OUTPUT:
                 return printOutput(currentState, currentCommand, input);
-            case actionTypes.CLEAR_CONSOLE:
+            case commandTypes.CLEAR_CONSOLE:
                 return clearConsole(currentState, input);
-            case actionTypes.EXIT_CONSOLE:
+            case commandTypes.EXIT_CONSOLE:
                 return exitConsole(currentState, input);
-            case actionTypes.HELP:
+            case commandTypes.HELP:
                 return showHelp(currentState, currentCommand, input);
             default:
                 return error(currentState, input);

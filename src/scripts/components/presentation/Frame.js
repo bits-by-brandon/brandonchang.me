@@ -1,43 +1,32 @@
-//React Component: Frame
-//============================
-
 import React, {Component} from 'react';
-import Repl from '../presentation/Repl';
+import Repl from '../container/Repl';
 import Menu from './Menu';
 import 'Styles/components/frame.scss';
 
 class Frame extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            consoleOn: false
-        };
+        this.frameRef = React.createRef();
         this.scrollToBottom = this.scrollToBottom.bind(this);
     }
 
     scrollToBottom() {
-        this.frameSquare.scrollTop = this.frameSquare.clientHeight;
+        this.frameRef.current.scrollTop = this.frameRef.current.clientHeight;
     }
 
     render() {
         return (
             <div className="frame">
                 <div
-                    className={"frame__square" + (this.state.consoleOn ? ' on' : '')}
-                    ref={(frameSquareDom) => {
-                        this.frameSquare = frameSquareDom
-                    }}
+                    className={"frame__square" + (this.props.consoleVisible ? ' frame__square--active' : '')}
+                    ref={this.frameRef}
                 >
-                    <Repl
-                        initialText="brandon_chang"
-                        blinkRate={800}
-                        handleEnter={(isEmpty) => {
-                            this.setState({
-                                consoleOn: isEmpty
-                            });
-                            this.scrollToBottom()
-                        }}
-                    />
+                    <Repl />
+                    {/*<Repl*/}
+                        {/*initialText="brandon_chang"*/}
+                        {/*blinkRate={800}*/}
+                        {/*handleEnter={this.scrollToBottom}*/}
+                    {/*/>*/}
                 </div>
                 <Menu
                     menuItems={[

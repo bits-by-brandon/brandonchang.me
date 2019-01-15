@@ -9,7 +9,7 @@ class sidebar extends Component {
     render() {
         return (
             <ul className="sidebar">
-                {this.props.textList.map((text, index)=>
+                {this.props.listItems.map((text, index)=>
                     <li key={index} >
                         <h3>{text}</h3>
                     </li>
@@ -20,17 +20,9 @@ class sidebar extends Component {
 }
 
 sidebar.propTypes = {
-    textList: PropTypes.arrayOf(
+    listItems: PropTypes.arrayOf(
         PropTypes.string
     ).isRequired
-};
-
-sidebar.defaultProps = {
-    textList: [
-        'design',
-        'develop',
-        'hack'
-    ]
 };
 
 export default sidebar;

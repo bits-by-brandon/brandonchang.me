@@ -1,9 +1,6 @@
-//React Component: Work List
-//============================
-
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import WorkItem from '../presentation/WorkItem';
+import WorkItem from './WorkItem';
 import 'Styles/sections/work-list.scss';
 
 class workList extends Component {
