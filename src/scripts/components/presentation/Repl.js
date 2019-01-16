@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import 'Styles/components/repl.scss';
-import ConsoleLine from "./ConsoleLine";
+import ConsoleLine from './ConsoleLine';
+import * as equal from 'fast-deep-equal';
 
 class Repl extends Component {
     constructor(props) {
         super(props);
+        this.frameRef = React.createRef();
+        this.scrollToBottom = this.scrollToBottom.bind(this);
     }
 
     componentDidMount() {
@@ -13,10 +16,26 @@ class Repl extends Component {
         this.props.startBlink(this.props.blinkRate);
     }
 
+    scrollToBottom() {
+        this.frameRef.current.scrollTop = this.frameRef.current.scrollHeight;
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!equal(
+            {console: prevProps.console, userInput: prevProps.userInput},
+            {console: this.props.console, userInput: this.props.userInput}
+        )) {
+            this.scrollToBottom();
+        }
+    }
+
     render() {
         const {initialText, cursorVisible, userInput, console, prompt} = this.props;
         return (
-            <div className="repl-console">
+            <div className={"frame__square" + (this.props.consoleVisible ? ' frame__square--active' : '')}
+                 ref={this.frameRef}
+            >
+                <div className="repl-console">
                 <pre>
                 <h1 className="repl-console__text">
                     {initialText}<br/>
@@ -24,10 +43,11 @@ class Repl extends Component {
                     {prompt + ' ' + userInput}
                     <span
                         className="cursor"
-                        style={{ opacity: cursorVisible ? '1' : '0' }}
+                        style={{opacity: cursorVisible ? '1' : '0'}}
                     >_</span>
                 </h1>
                 </pre>
+                </div>
             </div>
         );
     }

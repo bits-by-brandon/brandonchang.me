@@ -5,7 +5,7 @@ import {
     CONSOLE_DOWN,
     CONSOLE_INPUT,
     CONSOLE_SUBMIT,
-    CONSOLE_UP, TOGGLE_HIDE_CURSOR
+    CONSOLE_UP, INPUT_CLEAR, TOGGLE_HIDE_CURSOR
 } from "../actions/console";
 
 import applyConsoleCommand from './commands';
@@ -78,6 +78,9 @@ export default function console(state = defaultState, action) {
 
         case CONSOLE_CLOSE:
             return {...state, consoleVisible: false};
+
+        case INPUT_CLEAR:
+            return {...state, userInput: ''};
 
         case TOGGLE_HIDE_CURSOR:
             return {...state, cursorVisible: !state.cursorVisible};

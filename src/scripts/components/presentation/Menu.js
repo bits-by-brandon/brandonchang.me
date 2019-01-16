@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import 'Styles/components/menu.scss';
+import MenuItem from "../container/MenuItem";
 
 class menu extends Component {
     render() {
         return (
             <ul className="menu">
                 {this.props.menuItems.map((menuItem, index) =>
-                    <li className="menu__item" key={index}>
-                        <a href={"/" + menuItem.slug}>{menuItem.label}</a>
-                    </li>
+                    <MenuItem key={index} input={menuItem.slug} label={menuItem.label} />
                 )}
             </ul>
         );

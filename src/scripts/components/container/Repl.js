@@ -66,7 +66,6 @@ const mapKeyToAction = (event, dispatch) => {
 
         default:
             event.preventDefault();
-            // clearInterval(this.state.cursorInterval);
             return dispatch(consoleInput(key));
     }
 };
