@@ -1,14 +1,14 @@
 import Command, {commandTypes} from './Command';
 
 class Program extends Command {
-    constructor(inputs, callBack, options) {
+    constructor(inputs, options, callBack) {
         super(inputs, commandTypes.STREAM_CONSOLE, options);
         this._callBack = callBack;
     }
 
-    run(input) {
+    run(input, dispatch) {
         const args = Program.splitArgs(input);
-        this._callBack(args);
+        return this._callBack(args, dispatch);
     }
 }
 

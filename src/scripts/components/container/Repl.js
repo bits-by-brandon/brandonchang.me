@@ -5,8 +5,7 @@ import {
     consoleUp,
     consoleDown,
     consoleDelete,
-    consoleSubmit,
-    toggleHideCursor
+    toggleHideCursor, consoleRunCommand
 } from '../../actions/console';
 import Repl from '../presentation/Repl';
 
@@ -14,7 +13,7 @@ const cursorBlink = (blinkRate, dispatch) => setInterval(() => {
     dispatch(toggleHideCursor());
 }, blinkRate);
 
-const mapKeyToAction = (event, dispatch) => {
+const mapKeyToAction = (event, input, dispatch) => {
     let key = event.key.toLowerCase();
 
     if (event.metaKey) {
@@ -62,7 +61,7 @@ const mapKeyToAction = (event, dispatch) => {
 
         case "enter":
             event.preventDefault();
-            return dispatch(consoleSubmit());
+            return dispatch(consoleRunCommand(input));
 
         default:
             event.preventDefault();
@@ -73,7 +72,7 @@ const mapKeyToAction = (event, dispatch) => {
 const mapStateToProps = state => state.console;
 
 const mapDispatchToProps = dispatch => ({
-    keyPress: event => mapKeyToAction(event, dispatch),
+    keyPress: (event, input) => mapKeyToAction(event, input, dispatch),
     startBlink: blinkRate => cursorBlink(blinkRate, dispatch)
 });
 

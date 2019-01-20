@@ -55,9 +55,9 @@ export default class Command {
         return input.split(' ').slice(1);
     }
 
-    run(input) {
+    printOutput() {
         return this.responses.map(response => (
-            {type: ['response'], payload: response}
+            {type: ['response'], output: response}
         ))
     }
 }

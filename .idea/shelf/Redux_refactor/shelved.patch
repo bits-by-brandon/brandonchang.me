@@ -1,0 +1,252 @@
+Index: src/scripts/components/presentation/Repl.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, {Component} from 'react';\nimport PropTypes from 'prop-types';\nimport 'Styles/components/repl.scss';\nimport ConsoleLine from './ConsoleLine';\nimport * as equal from 'fast-deep-equal';\n\nclass Repl extends Component {\n    constructor(props) {\n        super(props);\n        this.frameRef = React.createRef();\n        this.scrollToBottom = this.scrollToBottom.bind(this);\n    }\n\n    componentDidMount() {\n        document.addEventListener(\"keydown\", this.props.keyPress, false);\n        this.props.startBlink(this.props.blinkRate);\n    }\n\n    scrollToBottom() {\n        this.frameRef.current.scrollTop = this.frameRef.current.scrollHeight;\n    }\n\n    componentDidUpdate(prevProps) {\n        if (!equal(\n            {console: prevProps.console, userInput: prevProps.userInput},\n            {console: this.props.console, userInput: this.props.userInput}\n        )) {\n            this.scrollToBottom();\n        }\n    }\n\n    render() {\n        const {initialText, cursorVisible, userInput, console, prompt} = this.props;\n        return (\n            <div className={\"frame__square\" + (this.props.consoleVisible ? ' frame__square--active' : '')}\n                 ref={this.frameRef}\n            >\n                <div className=\"repl-console\">\n                <pre>\n                <h1 className=\"repl-console__text\">\n                    {initialText}<br/>\n                    {console.map((line, index) => <ConsoleLine key={index} prompt={prompt} {...line} />)}\n                    {prompt + ' ' + userInput}\n                    <span\n                        className=\"cursor\"\n                        style={{opacity: cursorVisible ? '1' : '0'}}\n                    >_</span>\n                </h1>\n                </pre>\n                </div>\n            </div>\n        );\n    }\n}\n\nRepl.propTypes = {\n    keyPress: PropTypes.func,\n    initialText: PropTypes.string,\n    blinkRate: PropTypes.number,\n    handleEnter: PropTypes.func\n};\nRepl.defaultProps = {\n    initialText: 'brandon chang',\n    blinkRate: 1000\n};\n\nexport default Repl;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/scripts/components/presentation/Repl.js	(revision a41827272aef22bd1a49d588dad3ee7d6ce1acdd)
++++ src/scripts/components/presentation/Repl.js	(date 1547605785000)
+@@ -9,13 +9,18 @@
+         super(props);
+         this.frameRef = React.createRef();
+         this.scrollToBottom = this.scrollToBottom.bind(this);
++        this.handleKeyPress = this.handleKeyPress.bind(this);
+     }
+ 
+     componentDidMount() {
+-        document.addEventListener("keydown", this.props.keyPress, false);
++        document.addEventListener("keydown", this.handleKeyPress, false);
+         this.props.startBlink(this.props.blinkRate);
+     }
+ 
++    handleKeyPress(e) {
++        this.props.keyPress(e, this.props.console);
++    }
++
+     scrollToBottom() {
+         this.frameRef.current.scrollTop = this.frameRef.current.scrollHeight;
+     }
+Index: src/scripts/utility/commands.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import Command, {commandTypes} from '../models/Command';\n\nconst ytm = 31536000000;\nlet dob = Date.UTC(1993, 4, 7, 1, 23).valueOf();\nlet now = new Date().valueOf();\nlet ageMilliseconds = now - dob;\nlet years = Math.round((ageMilliseconds / ytm * 100)) / 100;\n\nexport const exit = new Command(\n    ['exit'],\n    commandTypes.EXIT_CONSOLE,\n    {helpText: 'exits console mode'}\n);\n\nexport const clear = new Command(\n    ['clear'],\n    commandTypes.CLEAR_CONSOLE,\n    {helpText: 'clears the console history'}\n);\n\nexport const help = new Command(\n    ['help', 'man'],\n    commandTypes.HELP,\n);\n\nexport const about = new Command(\n    ['about'],\n    commandTypes.PRINT_OUTPUT,\n    {\n        helpText: \"opens the 'about' info window\",\n        responses: [\n            \"running sql (SELECT * from users where id = 8931)\",\n            \"---------------------------------------\",\n            \"id:             8931\",\n            \"first:          brandon\",\n            \"last:           chang\",\n            `age:            ${years} years`,\n            \"sex:            M\",\n            \"races:          [ chinese, puerto rican ]\",\n            \"origin:         jamaica\",\n            \"ssn:            ***-**-****\",\n            \"email:          brandon@brandonchang.me\",\n            \"skills:\",\n            \"   frontend:    [ * * * ]\",\n            \"   backend:     [ * *   ]\",\n            \"   design:      [ * *   ]\",\n            \"   ( type 'skills' for a complete list )\",\n            \"---------------------------------------\",\n        ],\n    }\n);\n\nexport const skills = new Command(\n    ['skills', 'skill'],\n    commandTypes.PRINT_OUTPUT,\n    {\n        helpText: 'lists skill set',\n        responses: [\n            \"LANGUAGES ============================================\",\n            \"   javascript:  [ * * * ]\",\n            \"   php:         [ * * * ]\",\n            \"   python:      [ * *   ]\",\n            \"   swift:       [ *     ]\",\n            \" \",\n            \"FRAMEWORKS ===========================================\",\n            \"   frontend:    [ react, vue, BEM, jQuery, bootstrap ]\",\n            \"   backend:     [ wordpress, drupal, laravel, symphony,\",\n            \"                  jekyll ]\",\n            \"   cloud:       [ serverless ]\",\n            \" \",\n            \"TOOLING: =============================================\",\n            \"   general:     [ git, npm, cli, docker, vagrant ]\",\n            \"   frontend:    [ gulp, webpack, grunt, scss, canvas ]\",\n            \"   backend:     [ node, sql, pm2, graphQL ]\",\n            \"   design:      [ sketch, illustrator, after-effects,\",\n            \"                  photoshop ]\",\n        ],\n    }\n);\n\nexport const work = new Command(\n    ['work'],\n    commandTypes.PRINT_OUTPUT,\n    {\n        responses: ['portfolio coming soon...'],\n        helpText: 'lists available work samples'\n    }\n);\n\nexport const contact = new Command(\n    ['contact'],\n    commandTypes.PRINT_OUTPUT,\n    {\n        helpText: 'lists contact information',\n        responses: [\n            'email:  brandon@brandonchang.me',\n            'github: github.com/brandondc741',\n        ],\n    }\n);\n\n// export const changePrompt = new Program(['ps1'], args => ([{\n//     type: 'response',\n//     payload: 'changing prompt to' + args[0]\n// }]), {\n//     helpText: 'Change the prompt for each message'\n// });\n\nexport const rm = new Command(\n    ['rm -rf', 'rm -f', 'rm -rf /', 'rm -f /', 'rm /', 'rm -r /'],\n    commandTypes.PRINT_OUTPUT,\n    {responses: ['deleting all files...', 'removed 0 files']}\n);\n\nexport const helloWorld = new Command(\n    ['hello, world', 'hello world', 'hello world!', 'hello, world!'],\n    commandTypes.PRINT_OUTPUT,\n    {responses: [\"hello, curious human\"]}\n);\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/scripts/utility/commands.js	(revision a41827272aef22bd1a49d588dad3ee7d6ce1acdd)
++++ src/scripts/utility/commands.js	(date 1547607082000)
+@@ -6,8 +6,18 @@
+ let ageMilliseconds = now - dob;
+ let years = Math.round((ageMilliseconds / ytm * 100)) / 100;
+ 
++export function matchCommand(input) {
++    return commandArray.find(command => {
++        return command.inputs.includes(input)
++    });
++}
++
++export function getAllCommands() {
++
++}
++
+ export const exit = new Command(
+-    ['exit'],
++    ['exit', 'close'],
+     commandTypes.EXIT_CONSOLE,
+     {helpText: 'exits console mode'}
+ );
+@@ -117,3 +127,9 @@
+     commandTypes.PRINT_OUTPUT,
+     {responses: ["hello, curious human"]}
+ );
++
++export const explicit = new Command(
++    ['fuck', 'shit'],
++    commandTypes.PRINT_OUTPUT,
++    {responses: ['be nice']}
++);
+Index: src/scripts/reducers/console.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {\n    CONSOLE_CLEAR,\n    CONSOLE_CLOSE,\n    CONSOLE_DELETE,\n    CONSOLE_DOWN,\n    CONSOLE_INPUT,\n    CONSOLE_SUBMIT,\n    CONSOLE_UP, INPUT_CLEAR, TOGGLE_HIDE_CURSOR\n} from \"../actions/console\";\n\nimport applyConsoleCommand from './commands';\n\nconst defaultState = {\n    inputHistory: [],\n    inputHistoryIndex: 0,\n    userInput: '',\n    cursorVisible: false,\n    cursorInterval: null,\n    blinkRate: 1000,\n    prompt: '>',\n    console: [],\n    consoleVisible: false,\n    tabSpace: 8,\n    initialText: 'brandon_chang',\n};\n\nexport default function console(state = defaultState, action) {\n    switch (action.type) {\n\n        case CONSOLE_UP: {\n            const nextIndex = Math.min(\n                state.inputHistoryIndex + 1,\n                state.inputHistory.length\n            );\n            return {\n                ...state,\n                inputHistoryIndex: nextIndex,\n                userInput: state.inputHistory[state.inputHistory.length - nextIndex],\n            };\n        }\n\n        case CONSOLE_DOWN: {\n            if (state.inputHistoryIndex === 0) {\n                return;\n            }\n            const nextIndex = Math.max(state.inputHistoryIndex - 1, 1);\n            return {\n                ...state,\n                inputHistoryIndex: nextIndex,\n                userInput: state.inputHistory[state.inputHistory.length - nextIndex],\n            };\n        }\n\n        case CONSOLE_DELETE:\n            return {\n                ...state,\n                userInput: state.userInput.substring(0, state.userInput.length - 1),\n            };\n\n        case CONSOLE_INPUT:\n            return {\n                ...state,\n                userInput: state.userInput + action.payload,\n                hideCursor: false,\n            };\n\n        case CONSOLE_SUBMIT:\n            // Return last state if there is no user input\n            if (state.userInput.length === 0) {\n                return state\n            }\n\n            return applyConsoleCommand(state);\n\n\n        case CONSOLE_CLEAR:\n            return {...state, userInput: '', console: []};\n\n        case CONSOLE_CLOSE:\n            return {...state, consoleVisible: false};\n\n        case INPUT_CLEAR:\n            return {...state, userInput: ''};\n\n        case TOGGLE_HIDE_CURSOR:\n            return {...state, cursorVisible: !state.cursorVisible};\n\n        default:\n            return state;\n    }\n};\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/scripts/reducers/console.js	(revision a41827272aef22bd1a49d588dad3ee7d6ce1acdd)
++++ src/scripts/reducers/console.js	(date 1547606409000)
+@@ -72,7 +72,6 @@
+ 
+             return applyConsoleCommand(state);
+ 
+-
+         case CONSOLE_CLEAR:
+             return {...state, userInput: '', console: []};
+ 
+Index: src/scripts/actions/console.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import * as PQueue from 'p-queue';\nimport {delay} from \"../utility/utils\";\nconst consoleQueue = new PQueue({\n    concurrency: 1,\n});\n\nexport const CONSOLE_INPUT = 'CONSOLE_INPUT';\nexport const CONSOLE_UP = 'CONSOLE_UP';\nexport const CONSOLE_DOWN = 'CONSOLE_DOWN';\nexport const CONSOLE_DELETE = 'CONSOLE_DELETE';\nexport const CONSOLE_SUBMIT = 'CONSOLE_SUBMIT';\nexport const CONSOLE_CLEAR = 'CONSOLE_CLEAR';\nexport const CONSOLE_CLOSE = 'CONSOLE_CLOSE';\nexport const INPUT_CLEAR = 'INPUT_CLEAR';\nexport const TOGGLE_HIDE_CURSOR = 'TOGGLE_HIDE_CURSOR';\n\nexport function consoleInput(key) {\n    return {type: CONSOLE_INPUT, payload: key}\n}\n\nexport function consoleUp() {\n    return {type: CONSOLE_UP}\n}\n\nexport function consoleDown() {\n    return {type: CONSOLE_DOWN}\n}\n\nexport function consoleDelete() {\n    return {type: CONSOLE_DELETE}\n}\n\nexport function consoleSubmit() {\n    return {type: CONSOLE_SUBMIT}\n}\n\nexport function consoleClear() {\n    return {type: CONSOLE_CLEAR}\n}\n\nexport function consoleClose() {\n    return {type: CONSOLE_CLOSE}\n}\n\nexport function toggleHideCursor() {\n    return {type: TOGGLE_HIDE_CURSOR}\n}\n\nexport function inputClear() {\n    return {type: INPUT_CLEAR}\n}\n\n// Thunk actions\n\n/**\n * @param {string} input - string to enter into the console\n * @returns {Function}\n */\nexport function consoleRunCommand(input) {\n    return dispatch => {\n        // Clear out any queued typing\n        consoleQueue.clear();\n\n        // Clear any user input\n        dispatch(inputClear());\n\n        // Split the command's name into an array\n        const inputLetters = input.split('');\n\n        // Create a Promise for each letter\n        const inputActions = inputLetters.map(letter => () =>\n            delay(60).then(() => dispatch(consoleInput(letter))));\n\n        // Add the letters to queue for typing\n        consoleQueue.addAll(inputActions);\n\n        // Wait a second before adding the input command\n        consoleQueue.add(() => delay(200));\n\n        // Submit the input command\n        consoleQueue.add(() => dispatch(consoleSubmit()));\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/scripts/actions/console.js	(revision a41827272aef22bd1a49d588dad3ee7d6ce1acdd)
++++ src/scripts/actions/console.js	(date 1547606908000)
+@@ -1,6 +1,11 @@
+ import * as PQueue from 'p-queue';
+ import {delay} from "../utility/utils";
+-const consoleQueue = new PQueue({
++
++const inputQueue = new PQueue({
++    concurrency: 1,
++});
++
++const outputQueue = new PQueue({
+     concurrency: 1,
+ });
+ 
+@@ -11,6 +16,7 @@
+ export const CONSOLE_SUBMIT = 'CONSOLE_SUBMIT';
+ export const CONSOLE_CLEAR = 'CONSOLE_CLEAR';
+ export const CONSOLE_CLOSE = 'CONSOLE_CLOSE';
++export const CONSOLE_RUN_COMMAND = 'CONSOLE_RUN_COMMAND';
+ export const INPUT_CLEAR = 'INPUT_CLEAR';
+ export const TOGGLE_HIDE_CURSOR = 'TOGGLE_HIDE_CURSOR';
+ 
+@@ -52,14 +58,17 @@
+ 
+ // Thunk actions
+ 
++export function consoleRunCommand(input) {
++}
++
+ /**
+  * @param {string} input - string to enter into the console
+  * @returns {Function}
+  */
+-export function consoleRunCommand(input) {
++export function consoleInputCommand(input) {
+     return dispatch => {
+         // Clear out any queued typing
+-        consoleQueue.clear();
++        inputQueue.clear();
+ 
+         // Clear any user input
+         dispatch(inputClear());
+@@ -72,12 +81,12 @@
+             delay(60).then(() => dispatch(consoleInput(letter))));
+ 
+         // Add the letters to queue for typing
+-        consoleQueue.addAll(inputActions);
++        inputQueue.addAll(inputActions);
+ 
+         // Wait a second before adding the input command
+-        consoleQueue.add(() => delay(200));
++        inputQueue.add(() => delay(200));
+ 
+         // Submit the input command
+-        consoleQueue.add(() => dispatch(consoleSubmit()));
++        inputQueue.add(() => dispatch(consoleSubmit()));
+     }
+-}
+\ No newline at end of file
++}
+Index: src/scripts/components/container/MenuItem.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport {connect} from 'react-redux'\nimport MenuItem from '../presentation/MenuItem';\nimport {consoleRunCommand} from \"../../actions/console\";\n\nconst mapStateToProps = (state, ownProps) => ({\n    input: ownProps.input\n});\n\nconst mapDispatchToProps = dispatch => ({\n    onClick: command => dispatch(consoleRunCommand(command)),\n});\n\nexport default connect(mapStateToProps, mapDispatchToProps)(MenuItem);\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/scripts/components/container/MenuItem.js	(revision a41827272aef22bd1a49d588dad3ee7d6ce1acdd)
++++ src/scripts/components/container/MenuItem.js	(date 1547606409000)
+@@ -1,14 +1,14 @@
+ import React from 'react';
+ import {connect} from 'react-redux'
+ import MenuItem from '../presentation/MenuItem';
+-import {consoleRunCommand} from "../../actions/console";
++import {consoleInputCommand} from "../../actions/console";
+ 
+ const mapStateToProps = (state, ownProps) => ({
+     input: ownProps.input
+ });
+ 
+ const mapDispatchToProps = dispatch => ({
+-    onClick: command => dispatch(consoleRunCommand(command)),
++    onClick: command => dispatch(consoleInputCommand(command)),
+ });
+ 
+ export default connect(mapStateToProps, mapDispatchToProps)(MenuItem);
+Index: src/scripts/reducers/commands.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {commandTypes} from '../models/Command';\nimport * as commands from '../utility/commands';\n\nconst commandArray = Object.keys(commands).map(commandName => commands[commandName]);\n\nexport default function applyConsoleCommand(state) {\n\n    const input = state.userInput;\n\n    // Match the user input command to an appropriate command\n    const command = commandArray.find(command => {\n        return command.inputs.includes(input)\n    });\n\n    if (!command || typeof command !== \"object\") {\n        return error(state, input);\n    }\n\n    switch (command.commandType) {\n\n        case commandTypes.CLEAR_CONSOLE:\n            return {...state, userInput: '', console: []};\n\n        case commandTypes.HELP:\n            return showHelp(state, input);\n\n        case commandTypes.EXIT_CONSOLE: {\n            return {\n                ...state,\n                inputHistoryIndex: 0,\n                userInput: '',\n                inputHistory: state.inputHistory.concat(input),\n                consoleVisible: false,\n                console: []\n            };\n        }\n\n        case commandTypes.PRINT_OUTPUT:\n        default:\n            // Collect output from the command\n            const output = command.run(input);\n\n            return {\n                ...state,\n                inputHistoryIndex: 0,\n                userInput: '',\n                inputHistory: state.inputHistory.concat(input),\n                consoleVisible: true,\n                console: [\n                    ...state.console,\n                    {type: ['input'], payload: input}\n                ].concat(output)\n            };\n    }\n}\n\n/**\n *  Lists out all commands with the \"helpText\" property assigned\n */\nfunction showHelp(state, input) {\n    return {\n        ...state,\n        inputHistoryIndex: 0,\n        inputHistory: state.inputHistory.concat(input),\n        userInput: '',\n        consoleVisible: true,\n        console: [\n            ...state.console,\n            {type: ['input'], payload: input},\n            {type: ['response'], payload: '==== listing out available commands ===='},\n            ...commandArray\n                .filter(command => command.helpText)\n                .map(command => {\n                    let tabString = '';\n                    for (let i = 0; i < (state.tabSpace - command.commandName.length); i++) {\n                        tabString += \"\\u00A0\";\n                    }\n                    return {\n                        type: ['response'],\n                        payload: command.commandName + tabString + command.helpText\n                    }\n                })\n        ]\n    }\n}\n\n/**\n * @param state\n * @param input\n * @returns {object} newState\n */\nfunction error(state, input) {\n    return {\n        ...state,\n        inputHistoryIndex: 0,\n        inputHistory: state.inputHistory.concat(input),\n        userInput: '',\n        consoleVisible: true,\n        console: [\n            ...state.console,\n            {type: ['input'], payload: input},\n            {type: ['error'], payload: 'command not found: ' + input},\n            {type: ['error'], payload: \"type 'help' for list of available commands\"}\n        ]\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/scripts/reducers/commands.js	(revision a41827272aef22bd1a49d588dad3ee7d6ce1acdd)
++++ src/scripts/reducers/commands.js	(date 1547607069000)
+@@ -1,5 +1,6 @@
+ import {commandTypes} from '../models/Command';
+ import * as commands from '../utility/commands';
++import {matchCommand} from '../utility/commands';
+ 
+ const commandArray = Object.keys(commands).map(commandName => commands[commandName]);
+ 
+@@ -7,10 +8,7 @@
+ 
+     const input = state.userInput;
+ 
+-    // Match the user input command to an appropriate command
+-    const command = commandArray.find(command => {
+-        return command.inputs.includes(input)
+-    });
++    const command = matchCommand(input);
+ 
+     if (!command || typeof command !== "object") {
+         return error(state, input);
+Index: src/scripts/components/container/Repl.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport {connect} from 'react-redux'\nimport {\n    consoleInput,\n    consoleUp,\n    consoleDown,\n    consoleDelete,\n    consoleSubmit,\n    toggleHideCursor\n} from '../../actions/console';\nimport Repl from '../presentation/Repl';\n\nconst cursorBlink = (blinkRate, dispatch) => setInterval(() => {\n    dispatch(toggleHideCursor());\n}, blinkRate);\n\nconst mapKeyToAction = (event, dispatch) => {\n    let key = event.key.toLowerCase();\n\n    if (event.metaKey) {\n        // Exceptions for keyboard capture\n        switch (key) {\n            case \"r\":\n            case \"1\":\n            case \"2\":\n            case \"3\":\n            case \"4\":\n            case \"5\":\n            case \"6\":\n            case \"7\":\n            case \"8\":\n            case \"9\":\n            case \"0\":\n                return;\n        }\n    }\n\n    switch (key) {\n        case \"alt\":\n        case \"tab\":\n        case \"meta\":\n        case \"shift\":\n        case \"control\":\n        case \"capslock\":\n        case \"arrowleft\":\n        case \"arrowright\":\n        case \"contextmenu\":\n            return;\n\n        case \"arrowdown\":\n            event.preventDefault();\n            return dispatch(consoleDown());\n\n        case \"arrowup\":\n            event.preventDefault();\n            return dispatch(consoleUp());\n\n        case \"delete\":\n        case \"backspace\":\n            event.preventDefault();\n            return dispatch(consoleDelete());\n\n        case \"enter\":\n            event.preventDefault();\n            return dispatch(consoleSubmit());\n\n        default:\n            event.preventDefault();\n            return dispatch(consoleInput(key));\n    }\n};\n\nconst mapStateToProps = state => state.console;\n\nconst mapDispatchToProps = dispatch => ({\n    keyPress: event => mapKeyToAction(event, dispatch),\n    startBlink: blinkRate => cursorBlink(blinkRate, dispatch)\n});\n\nexport default connect(mapStateToProps, mapDispatchToProps)(Repl);
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/scripts/components/container/Repl.js	(revision a41827272aef22bd1a49d588dad3ee7d6ce1acdd)
++++ src/scripts/components/container/Repl.js	(date 1547606908000)
+@@ -6,7 +6,7 @@
+     consoleDown,
+     consoleDelete,
+     consoleSubmit,
+-    toggleHideCursor
++    toggleHideCursor, consoleRunCommand
+ } from '../../actions/console';
+ import Repl from '../presentation/Repl';
+ 
+@@ -14,7 +14,7 @@
+     dispatch(toggleHideCursor());
+ }, blinkRate);
+ 
+-const mapKeyToAction = (event, dispatch) => {
++const mapKeyToAction = (event, input, dispatch) => {
+     let key = event.key.toLowerCase();
+ 
+     if (event.metaKey) {
+@@ -62,7 +62,7 @@
+ 
+         case "enter":
+             event.preventDefault();
+-            return dispatch(consoleSubmit());
++            return dispatch(consoleRunCommand(input));
+ 
+         default:
+             event.preventDefault();
+@@ -73,7 +73,7 @@
+ const mapStateToProps = state => state.console;
+ 
+ const mapDispatchToProps = dispatch => ({
+-    keyPress: event => mapKeyToAction(event, dispatch),
++    keyPress: (event, input) => mapKeyToAction(event, input, dispatch),
+     startBlink: blinkRate => cursorBlink(blinkRate, dispatch)
+ });
+ 

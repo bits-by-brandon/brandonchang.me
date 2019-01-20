@@ -1,6 +1,13 @@
 import * as PQueue from 'p-queue';
 import {delay} from "../utility/utils";
-const consoleQueue = new PQueue({
+import {matchCommand} from "../programs";
+import {commandTypes} from "../models/Command";
+
+const inputQueue = new PQueue({
+    concurrency: 1,
+});
+
+const outputQueue = new PQueue({
     concurrency: 1,
 });
 
@@ -11,6 +18,9 @@ export const CONSOLE_DELETE = 'CONSOLE_DELETE';
 export const CONSOLE_SUBMIT = 'CONSOLE_SUBMIT';
 export const CONSOLE_CLEAR = 'CONSOLE_CLEAR';
 export const CONSOLE_CLOSE = 'CONSOLE_CLOSE';
+export const CONSOLE_OUTPUT = 'CONSOLE_OUTPUT';
+export const CONSOLE_SET_PROMPT = 'CONSOLE_SET_PROMPT';
+export const CONSOLE_ADD_HISTORY = 'CONSOLE_ADD_HISTORY';
 export const INPUT_CLEAR = 'INPUT_CLEAR';
 export const TOGGLE_HIDE_CURSOR = 'TOGGLE_HIDE_CURSOR';
 
@@ -42,6 +52,14 @@ export function consoleClose() {
     return {type: CONSOLE_CLOSE}
 }
 
+export function consoleOutput(message) {
+    return {type: CONSOLE_OUTPUT, payload: message}
+}
+
+export function consoleSetPrompt(prompt) {
+    return {type: CONSOLE_SET_PROMPT, payload: prompt}
+}
+
 export function toggleHideCursor() {
     return {type: TOGGLE_HIDE_CURSOR}
 }
@@ -51,15 +69,35 @@ export function inputClear() {
 }
 
 // Thunk actions
+export function consoleRunCommand(input) {
+    return dispatch => {
+        // Clear out any queued typing
+        inputQueue.clear();
+
+        // Find the appropriate command
+        const command = matchCommand(input);
+
+        // Check if command is a stream
+        if (!command || command.commandType !== commandTypes.STREAM_CONSOLE) {
+            dispatch(consoleSubmit());
+            return;
+        }
+
+        // TODO: Extract console add history
+        dispatch(inputClear());
+        dispatch(consoleOutput({type: ['input'], output: input}));
+        return command.run(input, dispatch);
+    }
+}
 
 /**
  * @param {string} input - string to enter into the console
  * @returns {Function}
  */
-export function consoleRunCommand(input) {
+export function consoleInputCommand(input) {
     return dispatch => {
         // Clear out any queued typing
-        consoleQueue.clear();
+        inputQueue.clear();
 
         // Clear any user input
         dispatch(inputClear());
@@ -72,12 +110,12 @@ export function consoleRunCommand(input) {
             delay(60).then(() => dispatch(consoleInput(letter))));
 
         // Add the letters to queue for typing
-        consoleQueue.addAll(inputActions);
+        inputQueue.addAll(inputActions);
 
         // Wait a second before adding the input command
-        consoleQueue.add(() => delay(200));
+        inputQueue.add(() => delay(200));
 
         // Submit the input command
-        consoleQueue.add(() => dispatch(consoleSubmit()));
+        inputQueue.add(() => dispatch(consoleSubmit()));
     }
 }

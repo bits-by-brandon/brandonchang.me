@@ -1,23 +1,17 @@
 import {commandTypes} from '../models/Command';
-import * as commands from '../utility/commands';
+import {matchCommand, getCommands} from '../programs';
 
-const commandArray = Object.keys(commands).map(commandName => commands[commandName]);
+const commandArray = getCommands();
 
 export default function applyConsoleCommand(state) {
-
     const input = state.userInput;
-
-    // Match the user input command to an appropriate command
-    const command = commandArray.find(command => {
-        return command.inputs.includes(input)
-    });
+    const command = matchCommand(input);
 
     if (!command || typeof command !== "object") {
         return error(state, input);
     }
 
     switch (command.commandType) {
-
         case commandTypes.CLEAR_CONSOLE:
             return {...state, userInput: '', console: []};
 
@@ -38,7 +32,7 @@ export default function applyConsoleCommand(state) {
         case commandTypes.PRINT_OUTPUT:
         default:
             // Collect output from the command
-            const output = command.run(input);
+            const output = command.printOutput();
 
             return {
                 ...state,
@@ -48,7 +42,7 @@ export default function applyConsoleCommand(state) {
                 consoleVisible: true,
                 console: [
                     ...state.console,
-                    {type: ['input'], payload: input}
+                    {type: ['input'], output: input}
                 ].concat(output)
             };
     }
@@ -66,8 +60,9 @@ function showHelp(state, input) {
         consoleVisible: true,
         console: [
             ...state.console,
-            {type: ['input'], payload: input},
-            {type: ['response'], payload: '==== listing out available commands ===='},
+            {type: ['input'], output: input},
+            {type: ['response'], output: 'AVAILABLE COMMANDS'},
+            {type: ['response'], output: '========================================'},
             ...commandArray
                 .filter(command => command.helpText)
                 .map(command => {
@@ -77,7 +72,7 @@ function showHelp(state, input) {
                     }
                     return {
                         type: ['response'],
-                        payload: command.commandName + tabString + command.helpText
+                        output: command.commandName + tabString + command.helpText
                     }
                 })
         ]
@@ -98,9 +93,9 @@ function error(state, input) {
         consoleVisible: true,
         console: [
             ...state.console,
-            {type: ['input'], payload: input},
-            {type: ['error'], payload: 'command not found: ' + input},
-            {type: ['error'], payload: "type 'help' for list of available commands"}
+            {type: ['input'], output: input},
+            {type: ['error'], output: 'command not found: ' + input},
+            {type: ['error'], output: "type 'help' for list of available commands"}
         ]
     }
 }

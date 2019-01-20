@@ -9,11 +9,16 @@ class Repl extends Component {
         super(props);
         this.frameRef = React.createRef();
         this.scrollToBottom = this.scrollToBottom.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     componentDidMount() {
-        document.addEventListener("keydown", this.props.keyPress, false);
+        document.addEventListener("keydown", this.handleKeyPress, false);
         this.props.startBlink(this.props.blinkRate);
+    }
+
+    handleKeyPress(e) {
+        this.props.keyPress(e, this.props.userInput);
     }
 
     scrollToBottom() {
@@ -37,7 +42,7 @@ class Repl extends Component {
             >
                 <div className="repl-console">
                 <pre>
-                <h1 className="repl-console__text">
+                <span className="repl-console__text">
                     {initialText}<br/>
                     {console.map((line, index) => <ConsoleLine key={index} prompt={prompt} {...line} />)}
                     {prompt + ' ' + userInput}
@@ -45,7 +50,7 @@ class Repl extends Component {
                         className="cursor"
                         style={{opacity: cursorVisible ? '1' : '0'}}
                     >_</span>
-                </h1>
+                </span>
                 </pre>
                 </div>
             </div>

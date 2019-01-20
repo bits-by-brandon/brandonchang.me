@@ -7,7 +7,6 @@
     position: absolute;
     padding: 50px;
     &__text{
-        cursor: pointer;
         font-weight: lighter;
         letter-spacing: 1px;
         line-height: 1.4;
@@ -20,10 +19,29 @@
 .line{
     display: block;
     line-height: 1.4;
+
+    a {
+      text-decoration: underline;
+      color: $blue;
+
+        &:hover{
+          &::after {
+            content: ' >';
+            animation: arrowAfter 1s linear infinite;
+          }
+          &::before {
+            content: '- ';
+          }
+        }
+    }
+
     &.error{
         color: $red;
     }
-    &.response{
-        color: $blue;
-    }
+}
+
+@keyframes arrowAfter {
+  0% { content: ' >' }
+  33% { content: ' ->' }
+  66% { content: ' -->' }
 }

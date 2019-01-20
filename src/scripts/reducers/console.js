@@ -5,7 +5,8 @@ import {
     CONSOLE_DOWN,
     CONSOLE_INPUT,
     CONSOLE_SUBMIT,
-    CONSOLE_UP, INPUT_CLEAR, TOGGLE_HIDE_CURSOR
+    CONSOLE_OUTPUT,
+    CONSOLE_UP, INPUT_CLEAR, TOGGLE_HIDE_CURSOR, CONSOLE_SET_PROMPT
 } from "../actions/console";
 
 import applyConsoleCommand from './commands';
@@ -72,6 +73,11 @@ export default function console(state = defaultState, action) {
 
             return applyConsoleCommand(state);
 
+        case CONSOLE_SET_PROMPT:
+            return {...state, prompt: action.payload};
+
+        case CONSOLE_OUTPUT:
+            return {...state, console: state.console.concat(action.payload)};
 
         case CONSOLE_CLEAR:
             return {...state, userInput: '', console: []};
