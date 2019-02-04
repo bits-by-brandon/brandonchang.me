@@ -8,6 +8,7 @@ import {
     toggleHideCursor, consoleRunCommand
 } from '../../actions/console';
 import Repl from '../presentation/Repl';
+import boot from "../../utility/boot";
 
 const cursorBlink = (blinkRate, dispatch) => setInterval(() => {
     dispatch(toggleHideCursor());
@@ -69,9 +70,16 @@ const mapKeyToAction = (event, input, dispatch) => {
     }
 };
 
+const mapBootKeyToAction = (event, dispatch) => {
+    if (event.key.toLowerCase() === 'enter') {
+        dispatch(boot());
+    }
+};
+
 const mapStateToProps = state => state.console;
 
 const mapDispatchToProps = dispatch => ({
+    bootKeyPress: event => mapBootKeyToAction(event, dispatch),
     keyPress: (event, input) => mapKeyToAction(event, input, dispatch),
     startBlink: blinkRate => cursorBlink(blinkRate, dispatch)
 });

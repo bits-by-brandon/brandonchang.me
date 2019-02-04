@@ -8,22 +8,27 @@ import Frame from "../container/Frame";
 import '../../utility/dotGrid';
 import 'Styles/components/dotgrid.scss';
 import 'Styles/app.scss';
+import Menu from "../container/Menu";
+import Repl from "../container/Repl";
 
 class App extends Component {
     constructor(props) {
         super(props);
     }
 
-    componentDidMount() {
-        console.log(this.props);
-        this.props.boot();
-    }
-
     render() {
         return (
             <div className={classnames("main", this.props.consoleState)}>
                 <div className={classnames("load-overlay", this.props.consoleState)} />
-                <Frame/>
+                <Repl />
+                <Menu
+                    menuItems={[
+                        {label: 'work', slug: 'work'},
+                        {label: 'about', slug: 'about'},
+                        {label: 'skills', slug: 'skills'},
+                        {label: 'contact', slug: 'contact'},
+                    ]}
+                />
                 {/*<div className="home hero">*/}
                 {/*<Sidebar listItems={['design', 'develop', 'hack']}/>*/}
                 {/*</div>*/}

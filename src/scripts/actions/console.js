@@ -20,6 +20,7 @@ export const CONSOLE_PRINT_LETTER = 'CONSOLE_PRINT_LETTER';
 export const CONSOLE_NEWLINE = 'CONSOLE_NEWLINE';
 export const CONSOLE_SET_SCREEN = 'CONSOLE_SET_SCREEN';
 export const CONSOLE_SET_PROMPT = 'CONSOLE_SET_PROMPT';
+export const CONSOLE_SET_INITIAL_TEXT = 'CONSOLE_SET_INITIAL_TEXT';
 export const CONSOLE_SET_STATE = 'CONSOLE_SET_STATE';
 export const CONSOLE_ADD_HISTORY = 'CONSOLE_ADD_HISTORY';
 export const INPUT_CLEAR = 'INPUT_CLEAR';
@@ -71,6 +72,10 @@ export function consoleSetScreen(console) {
 
 export function consoleSetPrompt(prompt) {
     return {type: CONSOLE_SET_PROMPT, payload: prompt}
+}
+
+export function consoleSetInitialText(initialText) {
+    return {type: CONSOLE_SET_INITIAL_TEXT, payload: initialText}
 }
 
 export function consoleSetState(state) {

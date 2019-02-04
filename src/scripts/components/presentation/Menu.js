@@ -1,21 +1,21 @@
 import PropTypes from 'prop-types';
-import React, {Component} from 'react';
+import React from 'react';
+import classnames from 'classnames';
 import 'Styles/components/menu.scss';
 import MenuItem from "../container/MenuItem";
 
-class menu extends Component {
-    render() {
-        return (
-            <ul className="menu">
-                {this.props.menuItems.map((menuItem, index) =>
-                    <MenuItem key={index} input={menuItem.slug} label={menuItem.label} />
-                )}
-            </ul>
-        );
-    }
-}
+const Menu = ({consoleState, menuItems}) => {
+    return (
+        <ul className={classnames("menu", consoleState)}>
+            {menuItems.map((menuItem, index) =>
+                <MenuItem key={index} input={menuItem.slug} label={menuItem.label}/>
+            )}
+        </ul>
+    );
+};
 
-menu.propTypes = {
+Menu.propTypes = {
+    consoleState: PropTypes.string,
     menuItems: PropTypes.arrayOf(
         PropTypes.shape({
             label: PropTypes.string.isRequired,
@@ -24,12 +24,4 @@ menu.propTypes = {
     )
 };
 
-menu.defaultProps = {
-    menuItems: [
-        {label: 'work', slug: 'work'},
-        {label: 'about', slug: 'about'},
-        {label: 'contact', slug: 'contact'},
-    ]
-};
-
-export default menu;
+export default Menu;

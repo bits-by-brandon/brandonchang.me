@@ -1,4 +1,4 @@
-import {consoleClear, consoleSetScreen, consoleSetState} from "../actions/console";
+import {consoleClear, consoleSetInitialText, consoleSetScreen, consoleSetState} from "../actions/console";
 import {delay} from "./utils";
 import OutputLine from "../models/OutputLine";
 import OutputStatusLine, {LINE_STATUS} from "../models/OutputStatusLine";
@@ -16,18 +16,20 @@ export default function boot() {
     return async dispatch => {
         let console = [];
 
-        await delay(1800);
+        dispatch(consoleSetState('booting'));
+
+        startupSound.play();
         console.push(new OutputLine(['output'], 'INITIALIZING BOOT SEQUENCE...'));
         console.push(new OutputLine(['output'], ' '));
         dispatch(renderScreen(console));
 
-        await delay(1500);
+        await delay(1100);
         console.push(new OutputLine(['output'], 'flybyBIOS -- v6.23 --'));
         console.push(new OutputLine(['output'], 'Copyright (C) 2018 - 2019, Crowbar studios, INC.'));
         console.push(new OutputLine(['output'], ' '));
         dispatch(renderScreen(console));
 
-        await delay(200);
+        await delay(1700);
         console.push(new OutputLine(['output'], '[      ] Running system check...'));
         dispatch(renderScreen(console));
 
@@ -128,10 +130,41 @@ export default function boot() {
         console.push(new OutputLine(['output'], 'Loading GUI...'));
         dispatch(renderScreen(console));
 
+        await delay(2000);
+        dispatch(consoleClear());
+
         await delay(500);
         dispatch(consoleSetState('ready'));
 
-        await delay(2000);
-        dispatch(consoleClear());
+
+        let typeSpeed = 70;
+
+        await delay(typeSpeed);
+        dispatch(consoleSetInitialText('b'));
+        await delay(typeSpeed);
+        dispatch(consoleSetInitialText('br'));
+        await delay(typeSpeed);
+        dispatch(consoleSetInitialText('bra'));
+        await delay(typeSpeed);
+        dispatch(consoleSetInitialText('bran'));
+        await delay(typeSpeed);
+        dispatch(consoleSetInitialText('brand'));
+        await delay(typeSpeed);
+        dispatch(consoleSetInitialText('brando'));
+        await delay(typeSpeed);
+        dispatch(consoleSetInitialText('brandon'));
+        await delay(typeSpeed);
+        dispatch(consoleSetInitialText('brandon_'));
+        await delay(typeSpeed);
+        dispatch(consoleSetInitialText('brandon_c'));
+        await delay(typeSpeed);
+        dispatch(consoleSetInitialText('brandon_ch'));
+        await delay(typeSpeed);
+        dispatch(consoleSetInitialText('brandon_cha'));
+        await delay(typeSpeed);
+        dispatch(consoleSetInitialText('brandon_chan'));
+        await delay(typeSpeed);
+        dispatch(consoleSetInitialText('brandon_chang'));
+        await delay(typeSpeed);
     }
 }

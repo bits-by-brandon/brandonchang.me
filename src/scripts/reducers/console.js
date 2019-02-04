@@ -12,7 +12,7 @@ import {
     CONSOLE_SET_PROMPT,
     CONSOLE_PRINT_LETTER,
     CONSOLE_SET_SCREEN,
-    CONSOLE_SET_STATE
+    CONSOLE_SET_STATE, CONSOLE_SET_INITIAL_TEXT
 } from "../actions/console";
 
 import applyConsoleCommand from './commands';
@@ -27,9 +27,10 @@ const defaultState = {
     prompt: '>',
     console: [],
     consoleVisible: false,
-    consoleState: 'booting',
+    consoleState: 'pre-boot',
     tabSpace: 8,
-    initialText: 'brandon_chang',
+    initialText: '',
+    bootText: 'brandonchang.me Interactive Command Prompt (ICP)\nPress ENTER to boot',
 };
 
 export default function console(state = defaultState, action) {
@@ -90,6 +91,9 @@ export default function console(state = defaultState, action) {
 
         case CONSOLE_SET_PROMPT:
             return {...state, prompt: action.payload};
+
+        case CONSOLE_SET_INITIAL_TEXT:
+            return {...state, initialText: action.payload};
 
         case CONSOLE_SET_STATE:
             return {...state, consoleState: action.payload};

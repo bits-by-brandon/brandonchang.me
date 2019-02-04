@@ -19,7 +19,11 @@ class Repl extends Component {
     }
 
     handleKeyPress(e) {
-        this.props.keyPress(e, this.props.userInput);
+        if(this.props.consoleState === 'ready') {
+            this.props.keyPress(e, this.props.userInput);
+        } else if(this.props.consoleState === 'pre-boot') {
+            this.props.bootKeyPress(e, this.props.userInput);
+        }
     }
 
     scrollToBottom() {
@@ -36,20 +40,23 @@ class Repl extends Component {
     }
 
     render() {
-        const {initialText, cursorVisible, userInput, console, prompt, consoleVisible, consoleState} = this.props;
+        const {initialText, cursorVisible, userInput, console, prompt, consoleVisible, consoleState, bootText} = this.props;
         return (
 
             <div className={classnames('frame__square', {
                 'frame__square--active' : consoleVisible,
-                'frame__square--booting' : consoleState === 'booting'
+                'frame__square--booting' : (consoleState === 'booting' || consoleState === 'pre-boot')
             })}
                  ref={this.frameRef}
             >
                 <div className="repl-console">
                 <pre>
                 <span className="repl-console__text">
-                    {consoleState !== 'booting' && (
-                        <span>{initialText} <br/></span>
+                    {consoleState === 'ready' && (
+                        <span>{initialText}<br/></span>
+                    )}
+                    {consoleState === 'pre-boot' && (
+                        <span>{bootText}<br/></span>
                     )}
                     {console.map((line, index) => <ConsoleLine key={index} prompt={prompt} {...line} />)}
                     {prompt + ' ' + userInput}

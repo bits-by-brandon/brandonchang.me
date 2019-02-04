@@ -17,7 +17,7 @@ body{
   transform: translateY(100%);
   transition: transform 2s linear;
 
-  &.booting {
+  &.booting, &.pre-boot {
     transform: translateY(0);
   }
 }
