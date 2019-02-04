@@ -8,15 +8,15 @@ const changePrompt = new Program(
         // Print error message if invalid args provided
         if(args.length !== 1) {
             dispatch(consoleOutput([
-                {type: ['error'], output: 'you must provide a single argument'},
-                {type: ['error'], output: 'ex: "prompt $"'},
+                {style: ['error'], output: 'you must provide a single argument'},
+                {style: ['error'], output: 'ex: "prompt $"'},
             ]));
             return;
         }
 
         // Print some info to the console
         dispatch(consoleOutput({
-            type: ['response'],
+            style: ['response'],
             output: 'changing prompt to ' + args[0]
         }));
 

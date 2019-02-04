@@ -1,47 +1,61 @@
 @import '../colors';
 
-.repl-console{
-    width: 100%;
-    left: 0;
-    top: 0;
-    position: absolute;
-    padding: 50px;
-    &__text{
-        font-weight: lighter;
-        letter-spacing: 1px;
-        line-height: 1.4;
-    }
-    .cursor{
-        font-weight: bolder;
-    }
+.repl-console {
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  padding: 50px;
+
+  &__text {
+    font-weight: lighter;
+    letter-spacing: 1px;
+    line-height: 1.4;
+  }
+
+  .cursor {
+    font-weight: bolder;
+  }
 }
 
-.line{
-    display: block;
-    line-height: 1.4;
+.line {
+  display: block;
+  line-height: 1.4;
 
-    a {
-      text-decoration: underline;
-      color: $blue;
+  a {
+    text-decoration: underline;
+    color: $blue;
 
-        &:hover{
-          &::after {
-            content: ' >';
-            animation: arrowAfter 1s linear infinite;
-          }
-          &::before {
-            content: '- ';
-          }
-        }
+    &:hover {
+      &::after {
+        content: ' >';
+        animation: arrowAfter 1s linear infinite;
+      }
+
+      &::before {
+        content: '- ';
+      }
     }
+  }
 
-    &.error{
-        color: $red;
-    }
+  &.error {
+    color: $red;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
 
 @keyframes arrowAfter {
-  0% { content: ' >' }
-  33% { content: ' ->' }
-  66% { content: ' -->' }
+  0% {
+    content: ' >'
+  }
+  33% {
+    content: ' ->'
+  }
+  66% {
+    content: ' -->'
+  }
 }

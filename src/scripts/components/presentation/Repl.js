@@ -35,9 +35,13 @@ class Repl extends Component {
     }
 
     render() {
-        const {initialText, cursorVisible, userInput, console, prompt} = this.props;
+        const {initialText, cursorVisible, userInput, console, prompt, consoleVisible, consoleState} = this.props;
         return (
-            <div className={"frame__square" + (this.props.consoleVisible ? ' frame__square--active' : '')}
+
+            <div className={classNames('frame__square', {
+                'frame__square--active' : consoleVisible,
+                'frame__square--loading' : consoleState === 'loading'
+            })}
                  ref={this.frameRef}
             >
                 <div className="repl-console">
@@ -62,8 +66,10 @@ Repl.propTypes = {
     keyPress: PropTypes.func,
     initialText: PropTypes.string,
     blinkRate: PropTypes.number,
-    handleEnter: PropTypes.func
+    handleEnter: PropTypes.func,
+    consoleState: PropTypes.string,
 };
+
 Repl.defaultProps = {
     initialText: 'brandon chang',
     blinkRate: 1000

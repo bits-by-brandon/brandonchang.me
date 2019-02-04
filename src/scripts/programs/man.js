@@ -14,7 +14,7 @@ const man = new Program(
             // Error if a command or helpText was not found
             if (!command || !command.helpText) {
                 dispatch(consoleOutput({
-                    type: ['error'],
+                    style: ['error'],
                     output: 'no manual entry for ' + arg
                 }));
                 return;
@@ -22,7 +22,7 @@ const man = new Program(
 
             // Log the help text
             dispatch(consoleOutput({
-                type: ['response'],
+                style: ['response'],
                 output: command.helpText
             }));
         });

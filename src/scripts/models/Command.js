@@ -57,7 +57,7 @@ export default class Command {
 
     printOutput() {
         return this.responses.map(response => (
-            {type: ['response'], output: response}
+            {style: ['response'], output: response}
         ))
     }
 }

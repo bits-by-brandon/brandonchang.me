@@ -2,12 +2,9 @@ import * as PQueue from 'p-queue';
 import {delay} from "../utility/utils";
 import {matchCommand} from "../programs";
 import {commandTypes} from "../models/Command";
+import {queueLine, queueLines} from "../utility/queueLines";
 
 const inputQueue = new PQueue({
-    concurrency: 1,
-});
-
-const outputQueue = new PQueue({
     concurrency: 1,
 });
 
@@ -19,6 +16,9 @@ export const CONSOLE_SUBMIT = 'CONSOLE_SUBMIT';
 export const CONSOLE_CLEAR = 'CONSOLE_CLEAR';
 export const CONSOLE_CLOSE = 'CONSOLE_CLOSE';
 export const CONSOLE_OUTPUT = 'CONSOLE_OUTPUT';
+export const CONSOLE_PRINT_LETTER = 'CONSOLE_PRINT_LETTER';
+export const CONSOLE_NEWLINE = 'CONSOLE_NEWLINE';
+export const CONSOLE_SET_SCREEN = 'CONSOLE_SET_SCREEN';
 export const CONSOLE_SET_PROMPT = 'CONSOLE_SET_PROMPT';
 export const CONSOLE_ADD_HISTORY = 'CONSOLE_ADD_HISTORY';
 export const INPUT_CLEAR = 'INPUT_CLEAR';
@@ -56,6 +56,18 @@ export function consoleOutput(message) {
     return {type: CONSOLE_OUTPUT, payload: message}
 }
 
+export function consolePrintLetter(letter, style = ['input']) {
+    return {type: CONSOLE_PRINT_LETTER, payload: {letter, style}}
+}
+
+export function consoleNewLine() {
+    return {type: CONSOLE_NEWLINE }
+}
+
+export function consoleSetScreen(console) {
+    return {type: CONSOLE_SET_SCREEN, payload: console}
+}
+
 export function consoleSetPrompt(prompt) {
     return {type: CONSOLE_SET_PROMPT, payload: prompt}
 }
@@ -85,7 +97,7 @@ export function consoleRunCommand(input) {
 
         // TODO: Extract console add history
         dispatch(inputClear());
-        dispatch(consoleOutput({type: ['input'], output: input}));
+        dispatch(consoleOutput({style: ['input'], output: input}));
         return command.run(input, dispatch);
     }
 }
@@ -96,21 +108,37 @@ export function consoleRunCommand(input) {
  */
 export function consoleInputCommand(input) {
     return dispatch => {
-        // Clear out any queued typing
-        inputQueue.clear();
 
         // Clear any user input
         dispatch(inputClear());
 
-        // Split the command's name into an array
-        const inputLetters = input.split('');
+        // Add letters to the queue for typing
+        queueLine(input, inputQueue, letter => {
+            dispatch(consoleInput(letter))
+        }, 60);
 
-        // Create a Promise for each letter
-        const inputActions = inputLetters.map(letter => () =>
-            delay(60).then(() => dispatch(consoleInput(letter))));
+        // Wait a second before adding the input command
+        inputQueue.add(() => delay(200));
 
-        // Add the letters to queue for typing
-        inputQueue.addAll(inputActions);
+        // Submit the input command
+        inputQueue.add(() => dispatch(consoleSubmit()));
+    }
+}
+
+/**
+ * @returns {Function}
+ * @param lines
+ */
+export function consoleOutputMultiple(lines) {
+    return dispatch => {
+
+        // Clear any user input
+        dispatch(inputClear());
+
+        // Add lines to the queue for typing
+        queueLines(lines, inputQueue, line => {
+            dispatch(consoleOutput(line))
+        }, 200);
 
         // Wait a second before adding the input command
         inputQueue.add(() => delay(200));

@@ -5,7 +5,7 @@ const echo = new Program(
     ['echo'],
     {helpText: 'prints the passed in arguments'},
     (args, dispatch) => {
-        dispatch(consoleOutput({type: ['response'], output: args.join(' ')}));
+        dispatch(consoleOutput({style: ['response'], output: args.join(' ')}));
     }
 );
 

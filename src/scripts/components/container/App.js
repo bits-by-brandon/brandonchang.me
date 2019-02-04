@@ -1,21 +1,14 @@
 import React from 'react';
+import {connect} from 'react-redux'
+import App from '../presentation/App';
+import boot from '../../utility/boot';
 
-import Sidebar from "../presentation/Sidebar";
-import WorkList from "../presentation/WorkList";
-import Frame from "./Frame";
+const mapStateToProps = state => ({
+    consoleState: state.console.consoleState,
+});
 
-import '../../utility/dotGrid';
-import 'Styles/components/dotgrid.scss';
-import 'Styles/app.scss';
+const mapDispatchToProps = dispatch => ({
+    boot: () => dispatch(boot()),
+});
 
-const App = () => (
-    <div className="main">
-        <Frame/>
-        {/*<div className="home hero">*/}
-            {/*<Sidebar listItems={['design', 'develop', 'hack']}/>*/}
-        {/*</div>*/}
-        {/*<WorkList/>*/}
-    </div>
-);
-
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

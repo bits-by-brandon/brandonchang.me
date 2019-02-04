@@ -9,11 +9,11 @@ class ConsoleLine extends Component {
 
 
     render() {
-        const {type, output, prompt} = this.props;
-        const classes = ['line', ...type];
+        const {style, output, prompt} = this.props;
+        const classes = ['line', ...style];
         return (
             <span className={classes.join(' ')}>
-                {(type.includes('input')) ? prompt + ' ' : ''}
+                {(style.includes('input')) ? prompt + ' ' : ''}
                 <span dangerouslySetInnerHTML={{__html: output}}/>
             </span>
         )
@@ -21,7 +21,7 @@ class ConsoleLine extends Component {
 }
 
 ConsoleLine.propTypes = {
-    type: PropTypes.array.isRequired,
+    style: PropTypes.arrayOf(PropTypes.string).isRequired,
     output: PropTypes.string,
     prompt: PropTypes.string.isRequired
 };

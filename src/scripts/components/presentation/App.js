@@ -1,40 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {Provider} from 'react-redux'
+import React, {Component} from 'react';
+import classnames from 'classnames';
 
-import Frame from './Frame';
-import Sidebar from './Sidebar';
-import WorkList from './WorkList';
-
-import 'Styles/app.scss';
-import 'Styles/sections/hero.scss';
+// import Sidebar from "../presentation/Sidebar";
+// import WorkList from "../presentation/WorkList";
+import Frame from "../container/Frame";
 
 import '../../utility/dotGrid';
 import 'Styles/components/dotgrid.scss';
+import 'Styles/app.scss';
 
-const App = ({store}) => (
-    <Provider store={store}>
-        <div className="main">
-            <Frame />
-            <div className="home hero">
-                <Sidebar listItems={['design', 'develop', 'hack']}/>
+class App extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        console.log(this.props);
+        this.props.boot();
+    }
+
+    render() {
+        return (
+            <div className={classnames("main", this.props.consoleState)}>
+                <Frame/>
+                {/*<div className="home hero">*/}
+                {/*<Sidebar listItems={['design', 'develop', 'hack']}/>*/}
+                {/*</div>*/}
+                {/*<WorkList/>*/}
             </div>
-            <WorkList
-                items={[
-                    {
-                        header: 'Dota 2',
-                        subheader: 'Interactive Map',
-                        imageUrl: '/public/img/dota-2.jpg',
-                        iconUrl: '/public/img/dota-2-icon.png'
-                    }
-                ]}
-            />
-        </div>
-    </Provider>
-);
-
-App.propTypes = {
-    store: PropTypes.object.isRequired
-};
+        )
+    }
+}
 
 export default App;

@@ -42,7 +42,7 @@ export default function applyConsoleCommand(state) {
                 consoleVisible: true,
                 console: [
                     ...state.console,
-                    {type: ['input'], output: input}
+                    {style: ['input'], output: input}
                 ].concat(output)
             };
     }
@@ -60,9 +60,9 @@ function showHelp(state, input) {
         consoleVisible: true,
         console: [
             ...state.console,
-            {type: ['input'], output: input},
-            {type: ['response'], output: 'AVAILABLE COMMANDS'},
-            {type: ['response'], output: '========================================'},
+            {style: ['input'], output: input},
+            {style: ['response'], output: 'AVAILABLE COMMANDS'},
+            {style: ['response'], output: '========================================'},
             ...commandArray
                 .filter(command => command.helpText)
                 .map(command => {
@@ -71,7 +71,7 @@ function showHelp(state, input) {
                         tabString += "\u00A0";
                     }
                     return {
-                        type: ['response'],
+                        style: ['response'],
                         output: command.commandName + tabString + command.helpText
                     }
                 })
@@ -93,9 +93,9 @@ function error(state, input) {
         consoleVisible: true,
         console: [
             ...state.console,
-            {type: ['input'], output: input},
-            {type: ['error'], output: 'command not found: ' + input},
-            {type: ['error'], output: "type 'help' for list of available commands"}
+            {style: ['input'], output: input},
+            {style: ['error'], output: 'command not found: ' + input},
+            {style: ['error'], output: "type 'help' for list of available commands"}
         ]
     }
 }
