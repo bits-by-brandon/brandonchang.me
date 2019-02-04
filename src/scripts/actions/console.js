@@ -20,6 +20,7 @@ export const CONSOLE_PRINT_LETTER = 'CONSOLE_PRINT_LETTER';
 export const CONSOLE_NEWLINE = 'CONSOLE_NEWLINE';
 export const CONSOLE_SET_SCREEN = 'CONSOLE_SET_SCREEN';
 export const CONSOLE_SET_PROMPT = 'CONSOLE_SET_PROMPT';
+export const CONSOLE_SET_STATE = 'CONSOLE_SET_STATE';
 export const CONSOLE_ADD_HISTORY = 'CONSOLE_ADD_HISTORY';
 export const INPUT_CLEAR = 'INPUT_CLEAR';
 export const TOGGLE_HIDE_CURSOR = 'TOGGLE_HIDE_CURSOR';
@@ -70,6 +71,10 @@ export function consoleSetScreen(console) {
 
 export function consoleSetPrompt(prompt) {
     return {type: CONSOLE_SET_PROMPT, payload: prompt}
+}
+
+export function consoleSetState(state) {
+    return {type: CONSOLE_SET_STATE, payload: state}
 }
 
 export function toggleHideCursor() {

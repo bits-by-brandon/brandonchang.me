@@ -6,7 +6,13 @@ import {
     CONSOLE_INPUT,
     CONSOLE_SUBMIT,
     CONSOLE_OUTPUT,
-    CONSOLE_UP, INPUT_CLEAR, TOGGLE_HIDE_CURSOR, CONSOLE_SET_PROMPT, CONSOLE_PRINT_LETTER, CONSOLE_SET_SCREEN
+    CONSOLE_UP,
+    INPUT_CLEAR,
+    TOGGLE_HIDE_CURSOR,
+    CONSOLE_SET_PROMPT,
+    CONSOLE_PRINT_LETTER,
+    CONSOLE_SET_SCREEN,
+    CONSOLE_SET_STATE
 } from "../actions/console";
 
 import applyConsoleCommand from './commands';
@@ -84,6 +90,9 @@ export default function console(state = defaultState, action) {
 
         case CONSOLE_SET_PROMPT:
             return {...state, prompt: action.payload};
+
+        case CONSOLE_SET_STATE:
+            return {...state, consoleState: action.payload};
 
         case CONSOLE_OUTPUT:
             return {...state, console: state.console.concat(action.payload)};

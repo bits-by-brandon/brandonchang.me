@@ -1,4 +1,4 @@
-import {consoleSetScreen} from "../actions/console";
+import {consoleClear, consoleSetScreen, consoleSetState} from "../actions/console";
 import {delay} from "./utils";
 import OutputLine from "../models/OutputLine";
 import OutputStatusLine, {LINE_STATUS} from "../models/OutputStatusLine";
@@ -63,7 +63,7 @@ export default function boot() {
         console[7].status = LINE_STATUS.OK;
         dispatch(renderScreen(console));
 
-        await delay(150);
+        await delay(350);
         console[5].text = '[==>   ] Running system check...';
         console[8].status = LINE_STATUS.OK;
         dispatch(renderScreen(console));
@@ -130,5 +130,11 @@ export default function boot() {
         console.push(new OutputLine(['output'], ' '));
         console.push(new OutputLine(['output'], 'Loading GUI...'));
         dispatch(renderScreen(console));
+
+        await delay(500);
+        dispatch(consoleSetState('ready'));
+
+        await delay(2000);
+        dispatch(consoleClear());
     }
 }

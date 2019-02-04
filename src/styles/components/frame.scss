@@ -27,5 +27,9 @@ $x-margin: 20px;
         &--active{
             background-color: rgba(0, 0, 0, .4);
         }
+
+        &--booting {
+            background-color: rgba(0, 0, 0, 0);
+        }
     }
 }

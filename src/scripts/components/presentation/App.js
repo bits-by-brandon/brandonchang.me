@@ -22,6 +22,7 @@ class App extends Component {
     render() {
         return (
             <div className={classnames("main", this.props.consoleState)}>
+                <div className={classnames("load-overlay", this.props.consoleState)} />
                 <Frame/>
                 {/*<div className="home hero">*/}
                 {/*<Sidebar listItems={['design', 'develop', 'hack']}/>*/}

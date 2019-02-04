@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import 'Styles/components/repl.scss';
 import ConsoleLine from './ConsoleLine';
@@ -38,16 +39,18 @@ class Repl extends Component {
         const {initialText, cursorVisible, userInput, console, prompt, consoleVisible, consoleState} = this.props;
         return (
 
-            <div className={classNames('frame__square', {
+            <div className={classnames('frame__square', {
                 'frame__square--active' : consoleVisible,
-                'frame__square--loading' : consoleState === 'loading'
+                'frame__square--booting' : consoleState === 'booting'
             })}
                  ref={this.frameRef}
             >
                 <div className="repl-console">
                 <pre>
                 <span className="repl-console__text">
-                    {initialText}<br/>
+                    {consoleState !== 'booting' && (
+                        <span>{initialText} <br/></span>
+                    )}
                     {console.map((line, index) => <ConsoleLine key={index} prompt={prompt} {...line} />)}
                     {prompt + ' ' + userInput}
                     <span
