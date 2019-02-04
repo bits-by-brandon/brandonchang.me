@@ -59,11 +59,13 @@ class Repl extends Component {
                         <span>{bootText}<br/></span>
                     )}
                     {console.map((line, index) => <ConsoleLine key={index} prompt={prompt} {...line} />)}
-                    {prompt + ' ' + userInput}
-                    <span
-                        className="cursor"
-                        style={{opacity: cursorVisible ? '1' : '0'}}
-                    >_</span>
+                    {consoleState !== 'booting' && (
+                        <span>{prompt + ' ' + userInput}
+                            <span className="cursor"
+                                style={{opacity: cursorVisible ? '1' : '0'}}
+                            >_</span>
+                        </span>
+                    )}
                 </span>
                 </pre>
                 </div>
