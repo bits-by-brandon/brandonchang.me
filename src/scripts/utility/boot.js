@@ -16,17 +16,14 @@ export default function boot() {
     return async dispatch => {
         let console = [];
 
-        await delay(300);
-        console.push(new OutputLine(['output'], 'flybyBIOS -- v6.23 --'));
-        console.push(new OutputLine(['output'], 'Copyright (C) 2018 - 2019, Crowbar studios, INC.'));
-        dispatch(renderScreen(console));
-
         await delay(1800);
+        console.push(new OutputLine(['output'], 'INITIALIZING BOOT SEQUENCE...'));
         console.push(new OutputLine(['output'], ' '));
         dispatch(renderScreen(console));
 
-        await delay(300);
-        console.push(new OutputLine(['output'], 'INITIALIZING BOOT SEQUENCE...'));
+        await delay(1500);
+        console.push(new OutputLine(['output'], 'flybyBIOS -- v6.23 --'));
+        console.push(new OutputLine(['output'], 'Copyright (C) 2018 - 2019, Crowbar studios, INC.'));
         console.push(new OutputLine(['output'], ' '));
         dispatch(renderScreen(console));
 
