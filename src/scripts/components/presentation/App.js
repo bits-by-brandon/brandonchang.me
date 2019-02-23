@@ -5,8 +5,8 @@ import classnames from 'classnames';
 // import WorkList from "../presentation/WorkList";
 import Frame from "../container/Frame";
 
-import '../../utility/dotGrid';
-import 'Styles/components/dotgrid.scss';
+import '../background/entry';
+import 'Styles/components/canvas.scss';
 import 'Styles/app.scss';
 import Menu from "../container/Menu";
 import Repl from "../container/Repl";

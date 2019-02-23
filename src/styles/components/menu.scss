@@ -2,7 +2,7 @@
   position: fixed;
   left: 50%;
   top: 50%;
-  transform: translate(375px, -275px);
+  transform: translate(375px, -300px);
   text-align: right;
   opacity: 0.5;
   transition: opacity 300ms ease-in-out;
@@ -13,8 +13,9 @@
   }
 
   &__item {
-    margin: 0 0 20px;
+    margin: 0 0 15px;
     font-size: 12px;
+    letter-spacing: 1px;
     opacity: 1;
     transition: opacity 50ms linear;
 
