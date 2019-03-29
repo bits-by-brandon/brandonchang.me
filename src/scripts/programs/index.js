@@ -9,6 +9,7 @@ import echo from './echo';
 import about from './about';
 import work from './work';
 import man from './man';
+import sandwich from './sandwich';
 
 export let commandArray = [];
 
@@ -33,3 +34,4 @@ registerCommand(help);
 registerCommand(work);
 registerCommand(contact);
 registerCommand(man);
+registerCommand(sandwich);
