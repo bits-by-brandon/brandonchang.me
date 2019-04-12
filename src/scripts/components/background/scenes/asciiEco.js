@@ -13,7 +13,7 @@ const sketch = p => {
 
   p.preload = () => {
     monospace = p.loadFont('fonts/SpaceMono-Regular.ttf');
-    blur = p.loadShader('assets/scripts.shader.vert');
+    // blur = p.loadShader('assets/scripts.shader.vert');
   };
 
   p.setup = () => {
@@ -48,7 +48,7 @@ const sketch = p => {
       grid[i].display();
     }
 
-    p.shader(blur);
+    // p.shader(blur);
 
     // blur(image, uv, resolution, direction);
 

@@ -3,7 +3,6 @@ import classnames from 'classnames';
 
 // import Sidebar from "../presentation/Sidebar";
 // import WorkList from "../presentation/WorkList";
-import Frame from "../container/Frame";
 
 import '../background/entry';
 import 'Styles/components/canvas.scss';
