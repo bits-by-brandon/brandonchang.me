@@ -9,7 +9,9 @@
       <change beforePath="$PROJECT_DIR$/public/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/actions/console.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/actions/console.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/container/Repl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/container/Repl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/programs/sandwich.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/programs/sandwich.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/utility/boot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/utility/boot.js" afterDir="false" />
     </list>
     <list id="ab547a59-c3ae-419a-b0a9-6d93e5e53582" name="Redux refactor" comment="" />
@@ -53,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/scripts/components/presentation/App.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="192">
-              <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+              <caret line="10" column="77" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -68,11 +70,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scripts/components/container/Repl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+            <state relative-caret-position="194">
+              <caret line="76" column="18" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scripts/programs/sandwich.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -100,11 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scripts/utility/boot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+            <state relative-caret-position="96">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
               <folding>
                 <element signature="e#0#106#0" expanded="true" />
               </folding>
@@ -119,17 +130,6 @@
               <caret line="78" column="4" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/react-ga/types/index.d.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1892">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -173,7 +173,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/scripts/programs/index.js" />
         <option value="$PROJECT_DIR$/src/scripts/utility/addToQueue.js" />
         <option value="$PROJECT_DIR$/src/scripts/utility/consoleQueue.js" />
         <option value="$PROJECT_DIR$/src/scripts/utility/consoleQueueLine.js" />
@@ -220,10 +219,11 @@
         <option value="$PROJECT_DIR$/config.json" />
         <option value="$PROJECT_DIR$/src/index.html" />
         <option value="$PROJECT_DIR$/deploy.js" />
-        <option value="$PROJECT_DIR$/src/scripts/components/container/Repl.js" />
         <option value="$PROJECT_DIR$/src/scripts/actions/console.js" />
-        <option value="$PROJECT_DIR$/src/scripts/components/presentation/App.js" />
         <option value="$PROJECT_DIR$/src/scripts/utility/boot.js" />
+        <option value="$PROJECT_DIR$/src/scripts/components/container/Repl.js" />
+        <option value="$PROJECT_DIR$/src/scripts/programs/sandwich.js" />
+        <option value="$PROJECT_DIR$/src/scripts/components/presentation/App.js" />
       </list>
     </option>
   </component>
@@ -276,14 +276,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="personal-site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="personal-site" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="scripts" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="presentation" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -454,7 +446,7 @@
       <workItem from="1551034161444" duration="4000" />
       <workItem from="1553475775445" duration="4747000" />
       <workItem from="1554901327784" duration="17632000" />
-      <workItem from="1555083271165" duration="1796000" />
+      <workItem from="1555083271165" duration="2033000" />
     </task>
     <task id="LOCAL-00001" summary="Removes node_modules directory">
       <created>1547150818009</created>
@@ -520,7 +512,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157871000" />
+    <option name="totallyTimeSpent" value="158108000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -533,9 +525,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49757674" visible="true" weight="0.17506142" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49757674" visible="true" weight="0.17506142" />
       <window_info x="1513" y="-144" width="1251" height="867" id="Structure" order="1" sideWeight="0.5024233" side_tool="true" weight="0.27087796" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -547,7 +538,7 @@
       <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" auto_hide="true" x="1644" y="74" width="942" height="703" id="Version Control" order="8" sideWeight="0.4987715" type="WINDOWED" weight="0.3286026" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49250534" visible="true" weight="0.42030567" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49250534" visible="true" weight="0.42030567" />
       <window_info anchor="bottom" id="npm" order="10" sideWeight="0.5069593" side_tool="true" weight="0.34566596" />
       <window_info anchor="bottom" id="Run" order="11" sideWeight="0.50535333" side_tool="true" weight="0.50422835" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32969433" />
@@ -619,13 +610,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/styles/components/canvas.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scripts/utility/dotGrid.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -948,16 +932,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/components/container/Repl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scripts/components/container/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -982,16 +956,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/components/presentation/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scripts/actions/console.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-47">
@@ -1001,12 +965,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/container/Repl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="76" column="18" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/scripts/utility/boot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+        <state relative-caret-position="96">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
           <folding>
             <element signature="e#0#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/programs/sandwich.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/components/presentation/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="10" column="77" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

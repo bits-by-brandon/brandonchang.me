@@ -33,8 +33,6 @@ async function deployPublicFolder(bucket, deployFiles) {
   await Promise.all(deployFiles.map(async filePath => {
     const fileBuffer = await readFile(filePath);
 
-    console.log(mime.lookup(filePath));
-
     return putObject({
       ACL: "public-read",
       ContentType: mime.lookup(filePath) || 'application/octet-stream',
