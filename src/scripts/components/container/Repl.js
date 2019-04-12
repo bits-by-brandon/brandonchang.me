@@ -9,6 +9,7 @@ import {
 } from '../../actions/console';
 import Repl from '../presentation/Repl';
 import boot from "../../utility/boot";
+import ga from 'react-ga';
 
 const cursorBlink = (blinkRate, dispatch) => setInterval(() => {
     dispatch(toggleHideCursor());
@@ -72,6 +73,9 @@ const mapKeyToAction = (event, input, dispatch) => {
 
 const mapBootKeyToAction = (event, dispatch) => {
     if (event.key.toLowerCase() === 'enter') {
+        // Register boot event in Google Analytics
+        ga.event({category: 'Boot', action: 'Keyboard Boot', label: 'Standard'});
+
         dispatch(boot());
     }
 };

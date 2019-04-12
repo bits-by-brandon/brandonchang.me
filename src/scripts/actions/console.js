@@ -3,9 +3,10 @@ import {delay} from "../utility/utils";
 import {matchCommand} from "../programs";
 import {commandTypes} from "../models/Command";
 import {queueLine, queueLines} from "../utility/queueLines";
+import ga from 'react-ga';
 
 const inputQueue = new PQueue({
-    concurrency: 1,
+  concurrency: 1,
 });
 
 export const CONSOLE_INPUT = 'CONSOLE_INPUT';
@@ -27,89 +28,92 @@ export const INPUT_CLEAR = 'INPUT_CLEAR';
 export const TOGGLE_HIDE_CURSOR = 'TOGGLE_HIDE_CURSOR';
 
 export function consoleInput(key) {
-    return {type: CONSOLE_INPUT, payload: key}
+  return {type: CONSOLE_INPUT, payload: key}
 }
 
 export function consoleUp() {
-    return {type: CONSOLE_UP}
+  return {type: CONSOLE_UP}
 }
 
 export function consoleDown() {
-    return {type: CONSOLE_DOWN}
+  return {type: CONSOLE_DOWN}
 }
 
 export function consoleDelete() {
-    return {type: CONSOLE_DELETE}
+  return {type: CONSOLE_DELETE}
 }
 
 export function consoleSubmit() {
-    return {type: CONSOLE_SUBMIT}
+  return {type: CONSOLE_SUBMIT}
 }
 
 export function consoleClear() {
-    return {type: CONSOLE_CLEAR}
+  return {type: CONSOLE_CLEAR}
 }
 
 export function consoleClose() {
-    return {type: CONSOLE_CLOSE}
+  return {type: CONSOLE_CLOSE}
 }
 
 export function consoleOutput(message) {
-    return {type: CONSOLE_OUTPUT, payload: message}
+  return {type: CONSOLE_OUTPUT, payload: message}
 }
 
 export function consolePrintLetter(letter, style = ['input']) {
-    return {type: CONSOLE_PRINT_LETTER, payload: {letter, style}}
+  return {type: CONSOLE_PRINT_LETTER, payload: {letter, style}}
 }
 
 export function consoleNewLine() {
-    return {type: CONSOLE_NEWLINE }
+  return {type: CONSOLE_NEWLINE}
 }
 
 export function consoleSetScreen(console) {
-    return {type: CONSOLE_SET_SCREEN, payload: console}
+  return {type: CONSOLE_SET_SCREEN, payload: console}
 }
 
 export function consoleSetPrompt(prompt) {
-    return {type: CONSOLE_SET_PROMPT, payload: prompt}
+  return {type: CONSOLE_SET_PROMPT, payload: prompt}
 }
 
 export function consoleSetInitialText(initialText) {
-    return {type: CONSOLE_SET_INITIAL_TEXT, payload: initialText}
+  return {type: CONSOLE_SET_INITIAL_TEXT, payload: initialText}
 }
 
 export function consoleSetState(state) {
-    return {type: CONSOLE_SET_STATE, payload: state}
+  return {type: CONSOLE_SET_STATE, payload: state}
 }
 
 export function toggleHideCursor() {
-    return {type: TOGGLE_HIDE_CURSOR}
+  return {type: TOGGLE_HIDE_CURSOR}
 }
 
 export function inputClear() {
-    return {type: INPUT_CLEAR}
+  return {type: INPUT_CLEAR}
 }
 
 // Thunk actions
 export function consoleRunCommand(input) {
-    return dispatch => {
-        // Clear out any queued typing
-        inputQueue.clear();
+  return dispatch => {
+    // Clear out any queued typing
+    inputQueue.clear();
 
-        // Find the appropriate command
-        const command = matchCommand(input);
+    // Find the appropriate command
+    const command = matchCommand(input);
 
-        // Check if command is a stream
-        if (!command || command.commandType !== commandTypes.STREAM_CONSOLE) {
-            dispatch(consoleSubmit());
-            return;
-        }
+    // Check if command is a stream
+    if (!command || command.commandType !== commandTypes.STREAM_CONSOLE) {
+      // Register event with Google Analytics
+      ga.event({category: 'Command', action: 'Keyboard Submit', label: input});
 
-        // TODO: Extract console add history
-        dispatch(inputClear());
-        dispatch(consoleOutput({style: ['input'], output: input}));
-        return command.run(input, dispatch);
+      dispatch(consoleSubmit());
+      return;
     }
+
+    // TODO: Extract console add history
+    dispatch(inputClear());
+    dispatch(consoleOutput({style: ['input'], output: input}));
+    return command.run(input, dispatch);
+  }
 }
 
 /**
@@ -117,22 +121,25 @@ export function consoleRunCommand(input) {
  * @returns {Function}
  */
 export function consoleInputCommand(input) {
-    return dispatch => {
+  return dispatch => {
 
-        // Clear any user input
-        dispatch(inputClear());
+    // Clear any user input
+    dispatch(inputClear());
 
-        // Add letters to the queue for typing
-        queueLine(input, inputQueue, letter => {
-            dispatch(consoleInput(letter))
-        }, 60);
+    // Add letters to the queue for typing
+    queueLine(input, inputQueue, letter => {
+      dispatch(consoleInput(letter))
+    }, 60);
 
-        // Wait a second before adding the input command
-        inputQueue.add(() => delay(200));
+    // Wait a second before adding the input command
+    inputQueue.add(() => delay(200));
 
-        // Submit the input command
-        inputQueue.add(() => dispatch(consoleSubmit()));
-    }
+    // Register event with Google Analytics
+    ga.event({category: 'Command', action: 'Click Submit', label: input});
+
+    // Submit the input command
+    inputQueue.add(() => dispatch(consoleSubmit()));
+  }
 }
 
 /**
@@ -140,20 +147,20 @@ export function consoleInputCommand(input) {
  * @param lines
  */
 export function consoleOutputMultiple(lines) {
-    return dispatch => {
+  return dispatch => {
 
-        // Clear any user input
-        dispatch(inputClear());
+    // Clear any user input
+    dispatch(inputClear());
 
-        // Add lines to the queue for typing
-        queueLines(lines, inputQueue, line => {
-            dispatch(consoleOutput(line))
-        }, 200);
+    // Add lines to the queue for typing
+    queueLines(lines, inputQueue, line => {
+      dispatch(consoleOutput(line))
+    }, 200);
 
-        // Wait a second before adding the input command
-        inputQueue.add(() => delay(200));
+    // Wait a second before adding the input command
+    inputQueue.add(() => delay(200));
 
-        // Submit the input command
-        inputQueue.add(() => dispatch(consoleSubmit()));
-    }
+    // Submit the input command
+    inputQueue.add(() => dispatch(consoleSubmit()));
+  }
 }
