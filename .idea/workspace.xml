@@ -381,10 +381,10 @@
       <item itemvalue="Jest.All Tests" />
       <item itemvalue="Jest.Watch All Tests" />
       <item itemvalue="Node.js.Node Local" />
-      <item itemvalue="npm.dev" />
-      <item itemvalue="npm.test" />
       <item itemvalue="npm.deploy" />
       <item itemvalue="npm.deploy:S3" />
+      <item itemvalue="npm.dev" />
+      <item itemvalue="npm.test" />
     </list>
     <recent_temporary>
       <list>
