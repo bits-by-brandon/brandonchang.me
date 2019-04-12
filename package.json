@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
     "dev": "webpack-dev-server --hot --colors --inline",
     "build": "webpack --config webpack.config.prod.js",
     "deploy:S3": "node deploy.js",

@@ -3,7 +3,6 @@ import Ascii from "../models/Ascii";
 
 let grid = [];
 let monospace;
-let blur;
 let frame = 100000;
 let canvasSize = new p5.Vector(1000, 350);
 // let canvasSize = new p5.Vector(window.innerWidth, window.innerHeight);
@@ -12,8 +11,7 @@ const sketch = p => {
   p.Vector = p5.Vector;
 
   p.preload = () => {
-    monospace = p.loadFont('fonts/SpaceMono-Regular.ttf');
-    // blur = p.loadShader('assets/scripts.shader.vert');
+    monospace = p.loadFont('/fonts/SpaceMono-Regular.ttf');
   };
 
   p.setup = () => {
@@ -48,11 +46,7 @@ const sketch = p => {
       grid[i].display();
     }
 
-    // p.shader(blur);
-
-    // blur(image, uv, resolution, direction);
-
-    frame = frame += 0.003
+    frame += 0.003
   }
 };
 
