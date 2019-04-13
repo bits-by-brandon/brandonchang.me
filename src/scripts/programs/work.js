@@ -1,6 +1,6 @@
-import Command, {commandTypes} from "../models/Command";
+import Program, {commandTypes} from "../models/Program";
 
-const work = new Command(
+const work = new Program(
     ['work'],
     commandTypes.PRINT_OUTPUT,
     {

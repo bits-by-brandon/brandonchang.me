@@ -1,6 +1,6 @@
-import Command, {commandTypes} from "../models/Command";
+import Program, {commandTypes} from "../models/Program";
 
-const hello = new Command(
+const hello = new Program(
     ['hello', 'hi'],
     commandTypes.PRINT_OUTPUT,
     {responses: ['hi there']}

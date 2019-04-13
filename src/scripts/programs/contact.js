@@ -1,15 +1,13 @@
-import Command, {commandTypes} from "../models/Command";
+import React from "react";
+import Program from "../models/Program";
+import {programType} from "../interfaces/IProgram";
 
-const contact = new Command(
-    ['contact'],
-    commandTypes.PRINT_OUTPUT,
-    {
-        helpText: 'lists contact information',
-        responses: [
-            'email:  brandon@brandonchang.me',
-            'github: <a href="http://github.com/brandondc741" target="_blank">github.com/brandondc741</a>',
-        ],
-    }
+export default new Program('contact', {
+    type: programType.PRINT_OUTPUT,
+    helpText: 'lists contact information',
+    responses: [
+      'email:  brandon@brandonchang.me',
+      'github: http://github.com/brandondc741',
+    ],
+  }
 );
-
-export default contact;

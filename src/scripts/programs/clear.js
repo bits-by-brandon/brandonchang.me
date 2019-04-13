@@ -1,7 +1,7 @@
-import {commandTypes} from "../models/Command";
-import Command from "../models/Command";
+import {commandTypes} from "../models/Program";
+import Program from "../models/Program";
 
-const clear = new Command(
+const clear = new Program(
     ['clear'],
     commandTypes.CLEAR_CONSOLE,
     {helpText: 'clears the console history'}

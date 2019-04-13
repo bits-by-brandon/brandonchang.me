@@ -1,7 +1,7 @@
-import Program from "../models/Program";
+import InteractiveProgram from "../models/InteractiveProgram";
 import {consoleOutput} from "../actions/console";
 
-const echo = new Program(
+const echo = new InteractiveProgram(
     ['echo'],
     {helpText: 'prints the passed in arguments'},
     (args, dispatch) => {

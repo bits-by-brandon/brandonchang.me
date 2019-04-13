@@ -2,7 +2,7 @@ import {combineReducers} from "redux";
 import console from './console';
 
 const rootReducer = combineReducers({
-    console,
+  console,
 });
 
 export default rootReducer

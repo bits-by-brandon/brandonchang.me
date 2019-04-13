@@ -1,15 +1,15 @@
-import Program from "../models/Program";
-import {matchCommand} from "./index";
+import InteractiveProgram from "../models/InteractiveProgram";
+import ProgramManager from "./ProgramManager";
 import {consoleOutput} from "../actions/console";
 
-const man = new Program(
+const man = new InteractiveProgram(
     ['man'],
     {helpText: 'display the manual for a command'},
     (args, dispatch) => {
         // Loop through all args passed in
         args.forEach(arg => {
             // Attempt to match a command
-            const command = matchCommand(arg);
+            const command = ProgramManager.findProgram(arg);
 
             // Error if a command or helpText was not found
             if (!command || !command.helpText) {

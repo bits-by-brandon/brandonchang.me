@@ -1,6 +1,6 @@
-import Command, {commandTypes} from "../models/Command";
+import Program, {commandTypes} from "../models/Program";
 
-const sandwich = new Command(
+const sandwich = new Program(
   ['sandwich', 'make me a sandwich'],
   commandTypes.PRINT_OUTPUT,
   {responses: ['What? make it yourself']}

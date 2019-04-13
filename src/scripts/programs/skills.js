@@ -1,6 +1,6 @@
-import Command, {commandTypes} from "../models/Command";
+import Program, {commandTypes} from "../models/Program";
 
-const skills = new Command(
+const skills = new Program(
     ['skills', 'skill'],
     commandTypes.PRINT_OUTPUT,
     {

@@ -8,7 +8,7 @@ import 'Styles/app.scss';
 import Menu from "../container/Menu";
 import Repl from "../container/Repl";
 
-ga.initialize('UA-62431523-1', {debug: process.env.NODE_ENV !== 'production'});
+ga.initialize('UA-62431523-1', {debug: process.env.NODE_ENV !== 'production', testMode: process.env.NODE_ENV !== 'production'});
 ga.pageview(window.location.pathname);
 
 class App extends Component {
