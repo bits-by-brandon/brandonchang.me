@@ -1,4 +1,4 @@
-import {programType} from "../../interfaces/IProgram";
+import {ProgramType} from "../../interfaces/IProgram";
 import {ConsoleOutput, OutputType} from "../../models/ConsoleOutput";
 
 export const CONSOLE_INPUT = 'CONSOLE_INPUT';
@@ -32,6 +32,7 @@ export interface ConsoleState {
   consoleState: string,
   hideCursor: boolean,
   initialText: string,
+  tabSpace: number,
   bootText: string,
 }
 

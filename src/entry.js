@@ -6,7 +6,7 @@ import Root from './scripts/components/container/Root';
 import {AppContainer} from 'react-hot-loader';
 import configureStore from './scripts/store/configureStore';
 
-const store = configureStore();
+export const store = configureStore();
 
 const render = Component => {
   ReactDOM.render(

@@ -1,10 +1,10 @@
 import {Dispatch} from "redux";
-import IProgram, {programType} from "../interfaces/IProgram";
+import IProgram, {ProgramType} from "../interfaces/IProgram";
 import {consoleOutput} from "../actions/console";
 import {ConsoleOutput, OutputType} from "./ConsoleOutput";
 
 export interface ProgramOptions {
-  type: programType,
+  type?: ProgramType,
   responses?: string[],
   helpText?: string,
   aliases?: string[]
@@ -13,12 +13,12 @@ export interface ProgramOptions {
 export default class Program implements IProgram {
   protected _programName: string;
   protected _helpText?: string;
-  protected _type: programType;
+  protected _type: ProgramType;
   protected _responses?: string[];
   protected _aliases?: string[];
   protected _callback?: (args?: string[], dispatch?: Dispatch) => void;
 
-  constructor(programName: string, options: ProgramOptions, callback: (args?: string[], dispatch?: Dispatch) => void) {
+  constructor(programName: string, options: ProgramOptions, callback?: (args?: string[], dispatch?: Dispatch) => void) {
 
     const {responses, helpText, aliases = [], type} = options;
 

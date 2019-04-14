@@ -5,12 +5,13 @@ import exit from './exit';
 // import './skills'
 // import './hello';
 import help from './help';
-// import './clear';
-// import './echo';
+import echo from './echo';
 // import './about';
 import contact from './contact';
+import clear from "./clear";
 // import './work';
-// import './man';
+import man from './man';
+
 // import './sandwich';
 
 class ProgramManager implements IProgramManager {
@@ -33,9 +34,9 @@ class ProgramManager implements IProgramManager {
   }
 }
 
-const programManager = new ProgramManager([
-  contact, help, exit, changePrompt
-]);
+const programManager = new ProgramManager(
+  [contact, clear, help, exit, changePrompt, echo, man]
+);
 
 export class ProgramManagerHelper {
   static getProgramManager() {

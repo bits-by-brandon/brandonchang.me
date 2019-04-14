@@ -5,7 +5,7 @@ import {
   consoleUp,
   consoleDown,
   consoleDelete,
-  toggleHideCursor, consoleRunCommand, consoleClose, consoleClear
+  toggleHideCursor, consoleRunCommand, consoleClose, consoleClear, inputClear
 } from '../../actions/console';
 import Repl from '../presentation/Repl';
 import boot from '../../utility/boot';
@@ -17,6 +17,14 @@ const cursorBlink = (blinkRate, dispatch) => setInterval(() => {
 
 const mapKeyToAction = (event, input, dispatch) => {
   let key = event.key.toLowerCase();
+
+  if(event.ctrlKey) {
+    switch (key) {
+      case "c":
+        dispatch(inputClear());
+        return;
+    }
+  }
 
   if (event.metaKey) {
     // Exceptions for keyboard capture

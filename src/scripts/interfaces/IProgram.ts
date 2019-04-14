@@ -4,7 +4,7 @@ export interface ProgramCallback {
   (args: string[], dispatch: Dispatch): void;
 }
 
-export enum programType {
+export enum ProgramType {
   PRINT_OUTPUT,
   STREAM_CONSOLE,
   CLEAR_CONSOLE,

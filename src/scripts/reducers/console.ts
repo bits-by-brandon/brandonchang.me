@@ -32,6 +32,7 @@ const defaultState: ConsoleState = {
   consoleState: 'pre-boot',
   initialText: '',
   hideCursor: false,
+  tabSpace: 10,
   bootText: 'brandonchang.me Interactive Program Prompt (ICP)\nPress ENTER to boot',
 };
 

@@ -1,17 +1,21 @@
 import Program from "../models/Program";
-import {programType} from "../interfaces/IProgram";
+import {ProgramType} from "../interfaces/IProgram";
 import {OutputType} from "../models/ConsoleOutput";
 import {ProgramManagerHelper} from "./ProgramManager";
 import {consoleNewLine, consoleOutput} from "../actions/console";
+import {store} from '../../entry';
+import formatTab from "../utility/formatTab";
 
-const help = new Program('help', {type: programType.HELP}, (args, dispatch) => {
+const help = new Program('help', {type: ProgramType.HELP}, (args, dispatch) => {
     const programManager = ProgramManagerHelper.getProgramManager();
+    const tabSpace = store.getState().console.tabSpace;
+    console.log(tabSpace);
     let output = programManager
       .getPrograms()
       .filter(program => program.getHelpText())
       .map(program => ({
         style: [OutputType.STANDARD],
-        output: program.getCommandName() + '\t' + program.getHelpText()
+        output: formatTab(tabSpace, program.getCommandName(), program.getHelpText())
       }));
 
     output.unshift(
