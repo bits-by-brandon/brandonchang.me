@@ -3,7 +3,7 @@ import Program from "../models/Program";
 import {ProgramType} from "../interfaces/IProgram";
 import {OutputType} from "../models/ConsoleOutput";
 
-const changePrompt = new Program('prompt', {
+export default new Program('prompt', {
     type: ProgramType.STREAM_CONSOLE,
     aliases: ['set-prompt', 'ps1'],
     helpText: 'Change the console prompt'
@@ -27,5 +27,3 @@ const changePrompt = new Program('prompt', {
     dispatch(consoleSetPrompt(args[0]));
   }
 );
-
-export default changePrompt;

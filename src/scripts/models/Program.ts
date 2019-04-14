@@ -1,6 +1,6 @@
 import {Dispatch} from "redux";
 import IProgram, {ProgramType} from "../interfaces/IProgram";
-import {consoleOutput} from "../actions/console";
+import {consoleNewLine, consoleOutput} from "../actions/console";
 import {ConsoleOutput, OutputType} from "./ConsoleOutput";
 
 export interface ProgramOptions {
@@ -62,6 +62,7 @@ export default class Program implements IProgram {
     }
     if (this._responses && this._responses.length > 0) {
       Program.printResponse(this._responses, dispatch);
+      dispatch(consoleNewLine());
     }
   }
 

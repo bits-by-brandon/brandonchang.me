@@ -3,7 +3,7 @@ import Program from "../models/Program";
 import {ProgramType} from "../interfaces/IProgram";
 import {OutputType} from "../models/ConsoleOutput";
 
-const echo = new Program('echo',
+export default new Program('echo',
   {
     type: ProgramType.STREAM_CONSOLE,
     helpText: 'prints the passed in arguments'
@@ -19,5 +19,3 @@ const echo = new Program('echo',
     }
   }
 );
-
-export default echo;

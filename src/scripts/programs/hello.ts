@@ -1,11 +1,10 @@
 import Program from "../models/Program";
 import {ProgramType} from "../interfaces/IProgram";
 
-const hello = new Program('hello', {
+export default new Program('hello', {
     type: ProgramType.PRINT_OUTPUT,
-    aliases: ['hello', 'hi'],
+    aliases: ['hello', 'hi', 'hey', 'sup', 'hai', 'yo'],
     responses: ['hi there']
   }
 );
 
-export default hello

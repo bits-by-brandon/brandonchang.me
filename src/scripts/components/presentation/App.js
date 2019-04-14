@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import classnames from 'classnames';
-import ga from 'react-ga';
+import * as ga from 'react-ga';
 
 import '../background/entry';
 import 'Styles/components/canvas.scss';
@@ -9,7 +9,7 @@ import Menu from "../container/Menu";
 import Repl from "../container/Repl";
 
 ga.initialize('UA-62431523-1', {debug: process.env.NODE_ENV !== 'production', testMode: process.env.NODE_ENV !== 'production'});
-ga.pageview(window.location.pathname);
+ga.pageview('/boot');
 
 class App extends Component {
   constructor(props) {

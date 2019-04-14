@@ -181,8 +181,6 @@ body {
     .line a:hover::after {
       content: ' >';
       animation: arrowAfter 1s linear infinite; }
-    .line a:hover::before {
-      content: '- '; }
   .line.error {
     color: #ff3131; }
 

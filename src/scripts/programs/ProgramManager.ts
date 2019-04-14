@@ -2,17 +2,15 @@ import IProgram from '../interfaces/IProgram'
 import IProgramManager from "../interfaces/IProgramManager";
 import changePrompt from './changePrompt';
 import exit from './exit';
-// import './skills'
-// import './hello';
+import skills from './skills'
+import hello from './hello';
 import help from './help';
 import echo from './echo';
-// import './about';
+import about from './about';
 import contact from './contact';
 import clear from "./clear";
-// import './work';
+import work from './work';
 import man from './man';
-
-// import './sandwich';
 
 class ProgramManager implements IProgramManager {
   private programs: IProgram[];
@@ -35,7 +33,7 @@ class ProgramManager implements IProgramManager {
 }
 
 const programManager = new ProgramManager(
-  [contact, clear, help, exit, changePrompt, echo, man]
+  [exit, clear, about, skills, contact, work, changePrompt, echo, man, hello, help]
 );
 
 export class ProgramManagerHelper {

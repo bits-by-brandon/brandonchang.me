@@ -6,7 +6,10 @@ import {consoleNewLine, consoleOutput} from "../actions/console";
 import {store} from '../../entry';
 import formatTab from "../utility/formatTab";
 
-const help = new Program('help', {type: ProgramType.HELP}, (args, dispatch) => {
+export default new Program('help', {
+    type: ProgramType.HELP,
+    aliases: ['menu']
+  }, (args, dispatch) => {
     const programManager = ProgramManagerHelper.getProgramManager();
     const tabSpace = store.getState().console.tabSpace;
     console.log(tabSpace);
@@ -30,5 +33,3 @@ const help = new Program('help', {type: ProgramType.HELP}, (args, dispatch) => {
     dispatch(consoleNewLine());
   }
 );
-
-export default help

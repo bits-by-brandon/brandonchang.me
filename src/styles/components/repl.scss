@@ -31,10 +31,6 @@
         content: ' >';
         animation: arrowAfter 1s linear infinite;
       }
-
-      &::before {
-        content: '- ';
-      }
     }
   }
 

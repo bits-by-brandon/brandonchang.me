@@ -3,7 +3,7 @@ import {consoleNewLine, consoleOutput} from "../actions/console";
 import {OutputType} from "../models/ConsoleOutput";
 import Program from "../models/Program";
 
-const man = new Program('man', {helpText: 'display the manual for a command'},
+export default new Program('man', {helpText: 'display the manual for a command'},
   (args, dispatch) => {
     // Error messaging
     if (args.length !== 1) {
@@ -31,5 +31,3 @@ const man = new Program('man', {helpText: 'display the manual for a command'},
     dispatch(consoleNewLine());
   }
 );
-
-export default man;

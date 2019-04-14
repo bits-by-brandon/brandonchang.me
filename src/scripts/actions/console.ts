@@ -2,8 +2,7 @@ import PQueue from 'p-queue';
 import ProgramManager from "../programs/ProgramManager";
 import {delay} from "../utility/utils";
 import {queueLine, queueLines} from "../utility/queueLines";
-// @ts-ignore
-import ga from 'react-ga';
+import * as ga from 'react-ga';
 import parseArgs from "../utility/parseArgs";
 import {Dispatch} from "redux";
 import {ConsoleOutput, OutputType} from "../models/ConsoleOutput";
@@ -129,7 +128,7 @@ export function consoleRunCommand(input: string): (dispatch: Dispatch) => void {
  * @param {string} input - string to enter into the console
  * @returns {Function}
  */
-export function consoleInputCommand(input: string): (dispatch: Dispatch) => void {
+export function consoleTypeAndSubmitCommand(input: string): (dispatch: Dispatch) => void {
   return dispatch => {
 
     // Clear any user input
@@ -147,7 +146,11 @@ export function consoleInputCommand(input: string): (dispatch: Dispatch) => void
     ga.event({category: 'Program', action: 'Click Submit', label: input});
 
     // Submit the input command
-    inputQueue.add(() => dispatch(consoleSubmit()));
+    inputQueue.add(() => {
+      dispatch(consoleSubmit());
+      const program = ProgramManager.findProgram(input);
+      program.run(parseArgs(input), dispatch);
+    });
   }
 }
 
