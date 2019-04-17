@@ -1,23 +1,6 @@
-import {OutputType} from "../models/ConsoleOutput";
-import {
-  ConsoleState,
-  ConsoleAction,
-  CONSOLE_CLEAR,
-  CONSOLE_CLOSE,
-  CONSOLE_DELETE,
-  CONSOLE_DOWN,
-  CONSOLE_INPUT,
-  CONSOLE_SUBMIT,
-  CONSOLE_OUTPUT,
-  CONSOLE_UP,
-  INPUT_CLEAR,
-  TOGGLE_HIDE_CURSOR,
-  CONSOLE_SET_PROMPT,
-  CONSOLE_PRINT_LETTER,
-  CONSOLE_SET_SCREEN,
-  CONSOLE_SET_STATE,
-  CONSOLE_SET_INITIAL_TEXT, CONSOLE_NEWLINE,
-} from "../store/console/types";
+import {OutputType} from "../types/Output";
+import {ConsoleState} from "../store/console/types";
+import {ConsoleAction, ConsoleActionType} from "../actions/console";
 
 const defaultState: ConsoleState = {
   inputHistory: [],
@@ -39,7 +22,7 @@ const defaultState: ConsoleState = {
 export default function console(state = defaultState, action: ConsoleAction): ConsoleState {
   switch (action.type) {
 
-    case CONSOLE_UP: {
+    case ConsoleActionType.CONSOLE_UP: {
       const nextIndex = Math.min(
         state.inputHistoryIndex + 1,
         state.inputHistory.length
@@ -51,7 +34,7 @@ export default function console(state = defaultState, action: ConsoleAction): Co
       };
     }
 
-    case CONSOLE_DOWN: {
+    case ConsoleActionType.CONSOLE_DOWN: {
       if (state.inputHistoryIndex === 0) {
         return;
       }
@@ -63,20 +46,20 @@ export default function console(state = defaultState, action: ConsoleAction): Co
       };
     }
 
-    case CONSOLE_DELETE:
+    case ConsoleActionType.CONSOLE_DELETE:
       return {
         ...state,
         userInput: state.userInput.substring(0, state.userInput.length - 1),
       };
 
-    case CONSOLE_INPUT:
+    case ConsoleActionType.CONSOLE_INPUT:
       return {
         ...state,
         userInput: state.userInput + action.payload,
         hideCursor: false,
       };
 
-    case CONSOLE_SUBMIT:
+    case ConsoleActionType.CONSOLE_SUBMIT:
       // Return last state if there is no user input
       if (state.userInput.length === 0) {
         return state
@@ -89,41 +72,41 @@ export default function console(state = defaultState, action: ConsoleAction): Co
         consoleVisible: true
       };
 
-    case CONSOLE_PRINT_LETTER:
+    case ConsoleActionType.CONSOLE_PRINT_LETTER:
       let newConsole = [...state.console];
       let newMessage = newConsole.pop();
       newMessage.output = newMessage.output + action.payload.letter;
       newConsole.concat(newMessage);
       return {...state, console: newConsole};
 
-    case CONSOLE_SET_PROMPT:
+    case ConsoleActionType.CONSOLE_SET_PROMPT:
       return {...state, prompt: action.payload};
 
-    case CONSOLE_SET_INITIAL_TEXT:
+    case ConsoleActionType.CONSOLE_SET_INITIAL_TEXT:
       return {...state, initialText: action.payload};
 
-    case CONSOLE_SET_STATE:
+    case ConsoleActionType.CONSOLE_SET_STATE:
       return {...state, consoleState: action.payload};
 
-    case CONSOLE_OUTPUT:
+    case ConsoleActionType.CONSOLE_OUTPUT:
       return {...state, console: state.console.concat(action.payload)};
 
-    case CONSOLE_NEWLINE:
+    case ConsoleActionType.CONSOLE_NEWLINE:
       return {...state, console: state.console.concat({style: [OutputType.STANDARD], output: ' '})};
 
-    case CONSOLE_SET_SCREEN:
+    case ConsoleActionType.CONSOLE_SET_SCREEN:
       return {...state, console: action.payload};
 
-    case CONSOLE_CLEAR:
+    case ConsoleActionType.CONSOLE_CLEAR:
       return {...state, userInput: '', console: []};
 
-    case CONSOLE_CLOSE:
+    case ConsoleActionType.CONSOLE_CLOSE:
       return {...state, consoleVisible: false};
 
-    case INPUT_CLEAR:
+    case ConsoleActionType.INPUT_CLEAR:
       return {...state, userInput: ''};
 
-    case TOGGLE_HIDE_CURSOR:
+    case ConsoleActionType.TOGGLE_HIDE_CURSOR:
       return {...state, cursorVisible: !state.cursorVisible};
 
     default:

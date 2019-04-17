@@ -1,0 +1,1 @@
+{"version":3,"file":"configureStore.prod.js","sourceRoot":"","sources":["../../../src/scripts/store/configureStore.prod.js"],"names":[],"mappings":";;AAAA,iCAAoD;AACpD,6CAA+B;AAC/B,0CAAqC;AAErC,MAAM,cAAc,GAAG,cAAc,CAAC,EAAE,CAAC,mBAAW,CAChD,kBAAW,EACX,cAAc,EACd,uBAAe,CAAC,qBAAK,CAAC,CACzB,CAAC;AAEF,kBAAe,cAAc,CAAA"}

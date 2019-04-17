@@ -5,167 +5,195 @@ import {queueLine, queueLines} from "../utility/queueLines";
 import * as ga from 'react-ga';
 import parseArgs from "../utility/parseArgs";
 import {Dispatch} from "redux";
-import {ConsoleOutput, OutputType} from "../models/ConsoleOutput";
-import {
-  CONSOLE_CLEAR,
-  CONSOLE_CLOSE,
-  CONSOLE_DELETE,
-  CONSOLE_DOWN,
-  CONSOLE_INPUT,
-  CONSOLE_NEWLINE,
-  CONSOLE_OUTPUT,
-  CONSOLE_SET_INITIAL_TEXT,
-  CONSOLE_SET_PROMPT,
-  CONSOLE_SET_SCREEN,
-  CONSOLE_SET_STATE,
-  CONSOLE_SUBMIT,
-  CONSOLE_UP,
-  ConsoleAction,
-  INPUT_CLEAR,
-  TOGGLE_HIDE_CURSOR,
-} from "../store/console/types";
+import {Output, OutputType} from "../types/Output";
+import {Action} from "./types";
 
+export type ConsoleAction = Action<ConsoleActionType, any>;
+
+export enum ConsoleActionType {
+  CONSOLE_INPUT = 'CONSOLE_INPUT',
+  CONSOLE_UP = 'CONSOLE_UP',
+  CONSOLE_DOWN = 'CONSOLE_DOWN',
+  CONSOLE_DELETE = 'CONSOLE_DELETE',
+  CONSOLE_SUBMIT = 'CONSOLE_SUBMIT',
+  CONSOLE_CLEAR = 'CONSOLE_CLEAR',
+  CONSOLE_CLOSE = 'CONSOLE_CLOSE',
+  CONSOLE_OUTPUT = 'CONSOLE_OUTPUT',
+  CONSOLE_PRINT_LETTER = 'CONSOLE_PRINT_LETTER',
+  CONSOLE_NEWLINE = 'CONSOLE_NEWLINE',
+  CONSOLE_SET_SCREEN = 'CONSOLE_SET_SCREEN',
+  CONSOLE_SET_PROMPT = 'CONSOLE_SET_PROMPT',
+  CONSOLE_SET_INITIAL_TEXT = 'CONSOLE_SET_INITIAL_TEXT',
+  CONSOLE_SET_STATE = 'CONSOLE_SET_STATE',
+  CONSOLE_SET_CONTEXT = 'CONSOLE_SET_CONTEXT',
+  CONSOLE_ADD_HISTORY = 'CONSOLE_ADD_HISTORY',
+  INPUT_CLEAR = 'INPUT_CLEAR',
+  TOGGLE_HIDE_CURSOR = 'TOGGLE_HIDE_CURSOR',
+}
+
+function consoleInput(character: string): Action<ConsoleActionType, string> {
+  return {type: ConsoleActionType.CONSOLE_INPUT, payload: character}
+}
+
+function consoleUp(): Action<ConsoleActionType> {
+  return {type: ConsoleActionType.CONSOLE_UP}
+}
+
+function consoleDown(): Action<ConsoleActionType> {
+  return {type: ConsoleActionType.CONSOLE_DOWN}
+}
+
+function consoleDelete(): Action<ConsoleActionType> {
+  return {type: ConsoleActionType.CONSOLE_DELETE}
+}
+
+function consoleSubmit(): Action<ConsoleActionType> {
+  return {type: ConsoleActionType.CONSOLE_SUBMIT}
+}
+
+function consoleClear(): Action<ConsoleActionType> {
+  return {type: ConsoleActionType.CONSOLE_CLEAR}
+}
+
+function consoleClose(): Action<ConsoleActionType> {
+  return {type: ConsoleActionType.CONSOLE_CLOSE}
+}
+
+// Overloaded function signatures
+function consoleOutput(message: Output[]): Action<ConsoleActionType, string>
+function consoleOutput(message: Output): Action<ConsoleActionType, string>
+function consoleOutput(message: any): Action<ConsoleActionType, string>{
+  return {type: ConsoleActionType.CONSOLE_OUTPUT, payload: message}
+}
+
+function consoleNewLine(): Action<ConsoleActionType> {
+  return {type: ConsoleActionType.CONSOLE_NEWLINE}
+}
+
+function consoleSetScreen(console: Output[]): Action<ConsoleActionType, Output[]>{
+  return {type: ConsoleActionType.CONSOLE_SET_SCREEN, payload: console}
+}
+
+function consoleSetPrompt(prompt: string): Action<ConsoleActionType, string> {
+  return {type: ConsoleActionType.CONSOLE_SET_PROMPT, payload: prompt}
+}
+
+function consoleSetInitialText(initialText: string): Action<ConsoleActionType, string> {
+  return {type: ConsoleActionType.CONSOLE_SET_INITIAL_TEXT, payload: initialText}
+}
+
+// TODO: Convert consoleState into enum
+function consoleSetState(consoleState: string): Action<ConsoleActionType, string> {
+  return {type: ConsoleActionType.CONSOLE_SET_STATE, payload: consoleState}
+}
+
+function consoleSetContext(context: string): Action<ConsoleActionType, string> {
+  return {type: ConsoleActionType.CONSOLE_SET_CONTEXT, payload: context}
+}
+
+function toggleHideCursor(): Action<ConsoleActionType.TOGGLE_HIDE_CURSOR> {
+  return {type: ConsoleActionType.TOGGLE_HIDE_CURSOR}
+}
+
+function inputClear(): Action<ConsoleActionType> {
+  return {type: ConsoleActionType.INPUT_CLEAR}
+}
+
+export const actionCreators = {
+  consoleInput,
+  consoleUp,
+  consoleDown,
+  consoleDelete,
+  consoleSubmit,
+  consoleClear,
+  consoleClose,
+  consoleNewLine,
+  consoleOutput,
+  consoleSetScreen,
+  consoleSetPrompt,
+  consoleSetInitialText,
+  consoleSetState,
+  consoleSetContext,
+  toggleHideCursor,
+  inputClear,
+};
+
+// Thunk actions
 const inputQueue = new PQueue({
   concurrency: 1,
 });
 
-export function consoleInput(character: string): ConsoleAction {
-  return {type: CONSOLE_INPUT, payload: character}
-}
-
-export function consoleUp(): ConsoleAction {
-  return {type: CONSOLE_UP}
-}
-
-export function consoleDown(): ConsoleAction {
-  return {type: CONSOLE_DOWN}
-}
-
-export function consoleDelete(): ConsoleAction {
-  return {type: CONSOLE_DELETE}
-}
-
-export function consoleSubmit(): ConsoleAction {
-  return {type: CONSOLE_SUBMIT}
-}
-
-export function consoleClear(): ConsoleAction {
-  return {type: CONSOLE_CLEAR}
-}
-
-export function consoleClose(): ConsoleAction {
-  return {type: CONSOLE_CLOSE}
-}
-
-// Overloaded function signatures
-export function consoleOutput(message: ConsoleOutput[]): ConsoleAction
-export function consoleOutput(message: ConsoleOutput): ConsoleAction
-export function consoleOutput(message: any): ConsoleAction {
-  return {type: CONSOLE_OUTPUT, payload: message}
-}
-
-export function consoleNewLine(): ConsoleAction {
-  return {type: CONSOLE_NEWLINE}
-}
-
-export function consoleSetScreen(console: ConsoleOutput[]): ConsoleAction {
-  return {type: CONSOLE_SET_SCREEN, payload: console}
-}
-
-export function consoleSetPrompt(prompt: string): ConsoleAction {
-  return {type: CONSOLE_SET_PROMPT, payload: prompt}
-}
-
-export function consoleSetInitialText(initialText: string): ConsoleAction {
-  return {type: CONSOLE_SET_INITIAL_TEXT, payload: initialText}
-}
-
-// TODO: Convert consoleState into enum
-export function consoleSetState(consoleState: string): ConsoleAction {
-  return {type: CONSOLE_SET_STATE, payload: consoleState}
-}
-
-export function toggleHideCursor() {
-  return {type: TOGGLE_HIDE_CURSOR}
-}
-
-export function inputClear() {
-  return {type: INPUT_CLEAR}
-}
-
-// Thunk actions
-export function consoleRunCommand(input: string): (dispatch: Dispatch) => void {
-  return dispatch => {
-    // Clear out any queued typing
-    inputQueue.clear();
-
-    // Find the appropriate command
-    const program = ProgramManager.findProgram(input);
-
-    if (!program) {
-      dispatch(consoleSubmit());
-      dispatch(consoleOutput([
-          {style: [OutputType.ERROR], output: 'command not found: ' + input},
-          {style: [OutputType.STANDARD], output: "type 'help' for list of available commands"}
-        ]
-      ));
-      dispatch(consoleNewLine());
-      return;
-    }
-
-    // Register event with Google Analytics
-    ga.event({category: 'Program', action: 'Keyboard Submit', label: input});
-
-    // TODO: Extract console add history
-    // TODO: Add CONSOLE_VISIBLE action
-    dispatch(consoleSubmit());
-
-    return program.run(parseArgs(input), dispatch);
-  }
-}
+// export function consoleRunCommand(input: string): (dispatch: Dispatch) => void {
+//   return dispatch => {
+//     // Clear out any queued typing
+//     inputQueue.clear();
+//
+//     // Find the appropriate command
+//     const program = ProgramManager.findProgram(input);
+//
+//     if (!program) {
+//       dispatch(consoleSubmit());
+//       dispatch(consoleOutput([
+//           {style: [OutputType.ERROR], output: 'command not found: ' + input},
+//           {style: [OutputType.STANDARD], output: "type 'help' for list of available commands"}
+//         ]
+//       ));
+//       dispatch(consoleNewLine());
+//       return;
+//     }
+//
+//     // Register event with Google Analytics
+//     ga.event({category: 'Program', action: 'Keyboard Submit', label: input});
+//
+//     // TODO: Extract console add history
+//     dispatch(consoleSubmit());
+//
+//     return program.run(parseArgs(input), dispatch);
+//   }
+// }
 
 /**
  * @param {string} input - string to enter into the console
  * @returns {Function}
  */
-export function consoleTypeAndSubmitCommand(input: string): (dispatch: Dispatch) => void {
-  return dispatch => {
-
-    // Clear any user input
-    dispatch(inputClear());
-
-    // Add letters to the queue for typing
-    queueLine(input, inputQueue, (letter: string) => {
-      dispatch(consoleInput(letter))
-    }, 60);
-
-    // Wait a second before adding the input command
-    inputQueue.add(() => delay(200));
-
-    // Register event with Google Analytics
-    ga.event({category: 'Program', action: 'Click Submit', label: input});
-
-    // Submit the input command
-    inputQueue.add(() => {
-      dispatch(consoleSubmit());
-      const program = ProgramManager.findProgram(input);
-      program.run(parseArgs(input), dispatch);
-    });
-  }
-}
+// export function consoleTypeAndSubmitCommand(input: string): (dispatch: Dispatch) => void {
+//   return dispatch => {
+//
+//     // Clear any user input
+//     dispatch(inputClear());
+//
+//     // Add letters to the queue for typing
+//     queueLine(input, inputQueue, (letter: string) => {
+//       dispatch(consoleInput(letter))
+//     }, 60);
+//
+//     // Wait a second before adding the input command
+//     inputQueue.add(() => delay(200));
+//
+//     // Register event with Google Analytics
+//     ga.event({category: 'Program', action: 'Click Submit', label: input});
+//
+//     // Submit the input command
+//     inputQueue.add(() => {
+//       dispatch(consoleSubmit());
+//       const program = ProgramManager.findProgram(input);
+//       program.run(parseArgs(input), dispatch);
+//     });
+//   }
+// }
 
 /**
  * @returns {Function}
  * @param lines
  */
-export function consoleOutputMultiple(lines: ConsoleOutput[]): (dispatch: Dispatch) => void {
+export function OutputMultiple(lines: Output[]): (dispatch: Dispatch) => void {
   return dispatch => {
 
     // Clear any user input
     dispatch(inputClear());
 
     // Add lines to the queue for typing
-    queueLines(lines, inputQueue, (line: ConsoleOutput) => {
+    queueLines(lines, inputQueue, (line: Output) => {
       dispatch(consoleOutput(line))
     }, 200);
 

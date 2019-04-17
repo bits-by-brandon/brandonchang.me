@@ -1,7 +1,8 @@
-import {consoleNewLine, consoleOutput} from "../actions/console";
+import {actionCreators} from "../actions/console";
+const {consoleNewLine, consoleOutput} = actionCreators;
 import Program from "../models/Program";
 import {ProgramType} from "../interfaces/IProgram";
-import {OutputType} from "../models/ConsoleOutput";
+import {OutputType} from "../types/Output";
 
 export default new Program('echo',
   {

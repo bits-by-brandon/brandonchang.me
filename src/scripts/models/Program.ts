@@ -1,7 +1,9 @@
 import {Dispatch} from "redux";
 import IProgram, {ProgramType} from "../interfaces/IProgram";
-import {consoleNewLine, consoleOutput} from "../actions/console";
-import {ConsoleOutput, OutputType} from "./ConsoleOutput";
+import {actionCreators} from "../actions/console";
+import {OutputType} from "../types/Output";
+
+const {consoleNewLine, consoleOutput} = actionCreators;
 
 export interface ProgramOptions {
   type?: ProgramType,

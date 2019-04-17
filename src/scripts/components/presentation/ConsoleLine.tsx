@@ -1,6 +1,6 @@
 import * as React from 'react';
 import 'Styles/components/repl.scss';
-import {OutputType} from "../../models/ConsoleOutput";
+import {OutputType} from "../../types/Output";
 
 class ConsoleLine extends React.Component<ConsoleLineProps> {
   constructor(props: ConsoleLineProps) {

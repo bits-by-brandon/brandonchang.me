@@ -1,6 +1,7 @@
 import {ProgramManagerHelper} from "./ProgramManager";
-import {consoleNewLine, consoleOutput} from "../actions/console";
-import {OutputType} from "../models/ConsoleOutput";
+import {actionCreators} from "../actions/console";
+const {consoleNewLine, consoleOutput} = actionCreators;
+import {OutputType} from "../types/Output";
 import Program from "../models/Program";
 
 export default new Program('man', {helpText: 'display the manual for a command'},

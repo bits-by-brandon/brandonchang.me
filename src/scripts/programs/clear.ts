@@ -1,6 +1,7 @@
 import {ProgramType} from "../interfaces/IProgram";
 import Program from "../models/Program";
-import {consoleClear} from "../actions/console";
+import {actionCreators} from "../actions/console";
+const {consoleClear} = actionCreators;
 
 export default new Program('clear',
   {

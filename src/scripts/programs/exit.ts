@@ -1,6 +1,7 @@
 import Program from "../models/Program";
 import {ProgramType} from '../interfaces/IProgram';
-import {consoleClear, consoleClose} from "../actions/console";
+import {actionCreators} from "../actions/console";
+const {consoleClear, consoleClose} = actionCreators;
 
 export default new Program('exit', {
     aliases: ['close', 'quit', ':q', ':q!', 'q', 'q!'],

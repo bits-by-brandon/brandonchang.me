@@ -1,8 +1,9 @@
 import Program from "../models/Program";
 import {ProgramType} from "../interfaces/IProgram";
-import {OutputType} from "../models/ConsoleOutput";
+import {OutputType} from "../types/Output";
 import {ProgramManagerHelper} from "./ProgramManager";
-import {consoleNewLine, consoleOutput} from "../actions/console";
+import {actionCreators} from "../actions/console";
+const {consoleNewLine, consoleOutput} = actionCreators;
 import {store} from '../../entry';
 import formatTab from "../utility/formatTab";
 

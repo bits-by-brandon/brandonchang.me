@@ -5,5 +5,9 @@ export default interface IProgramManager {
 
   findProgram(query: string): IProgram | null;
 
+  runProgram(query: string): void | Error;
+
   getPrograms(): IProgram[];
+
+  getActiveProgram(): IProgram | null;
 }
