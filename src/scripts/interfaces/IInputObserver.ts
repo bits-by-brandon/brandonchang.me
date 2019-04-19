@@ -1,14 +1,11 @@
+import IObservable, {Subscription, Unsubscription} from "./IObservable";
 import {AnyAction} from "redux";
 
-export default interface IInputObserver {
-  subscribe(subscription: Subscription): () => void
-  event(event: Event, input: string): void;
+export default interface IInputObserver extends IObservable{
+  subscribe(subscription: Subscription<AnyAction>): Unsubscription
 }
 
-export interface Subscription {
-  (action: AnyAction): void;
-}
-
-export interface Unsubscription {
-  (subscription: Subscription): void;
-}
+// export interface Subscription {
+//   (action: AnyAction): void;
+// }
+//

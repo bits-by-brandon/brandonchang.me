@@ -5,7 +5,6 @@ export const queueLines = (lines: string[], queue: PQueue, lineCallback: (l: str
     // Create a Promise for each line
     const lineActions = lines.map(line => async () => {
         await delay(time);
-        // queueLine(line, queue, lineCallback, options.letterDelay);
         lineCallback(line);
     });
 

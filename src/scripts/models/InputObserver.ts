@@ -1,24 +1,24 @@
-import IInputObserver, {Subscription, Unsubscription} from "../interfaces/IInputObserver";
-import {actionCreators} from "../actions/console";
-import {AnyAction} from "redux";
+import {actionCreators, ConsoleAction} from "../actions/console";
+import {AnyAction, Dispatch} from "redux";
+import IObservable, {Subscription, Unsubscription} from "../interfaces/IObservable";
 
 const {consoleClose, consoleDelete, consoleDown, consoleInput, consoleSubmit, consoleUp, inputClear} = actionCreators;
 
-export class InputObserver implements IInputObserver {
+export class InputObserver<Action> implements IObservable {
   private subscriptions: Map<Subscription, Unsubscription>;
 
   constructor() {
     this.subscriptions = new Map;
   }
 
-  private emit(action: AnyAction) {
+  notify(action: AnyAction) {
     this.subscriptions.forEach((unsubscription, subscription) => subscription(action));
   }
 
   /**
    * Accepts a function that will be called with an Action every time an event occurs
    */
-  subscribe(subscription: Subscription) {
+  subscribe(subscription: Subscription): Unsubscription {
     const unsubscribe = () => {
       this.subscriptions.delete(subscription);
     };
@@ -34,7 +34,7 @@ export class InputObserver implements IInputObserver {
     if (event.ctrlKey) {
       switch (key) {
         case "c":
-          this.emit(inputClear());
+          this.notify(inputClear());
           return;
       }
     }
@@ -57,33 +57,33 @@ export class InputObserver implements IInputObserver {
 
       case "escape":
         event.preventDefault();
-        this.emit(consoleClose());
+        this.notify(consoleClose());
         break;
 
       case "arrowdown":
         event.preventDefault();
-        this.emit(consoleDown());
+        this.notify(consoleDown());
         break;
 
       case "arrowup":
         event.preventDefault();
-        this.emit(consoleUp());
+        this.notify(consoleUp());
         break;
 
       case "delete":
       case "backspace":
         event.preventDefault();
-        this.emit(consoleDelete());
+        this.notify(consoleDelete());
         break;
 
       case "enter":
         event.preventDefault();
-        this.emit(consoleSubmit());
+        this.notify(consoleSubmit());
         break;
 
       default:
         event.preventDefault();
-        this.emit(consoleInput(key));
+        this.notify(consoleInput(key));
     }
   }
 }
@@ -96,13 +96,3 @@ export class InputObserverHelper {
   }
 }
 
-// Program callback
-// let test = (args: string[], dispatch: Dispatch) => {
-//   const io = InputObserverHelper.getInputObserver();
-//
-//   const handleInput: void = (action: ConsoleAction => {
-//     console.log(action.type);
-//   };
-//
-//   io.subscribe(handleInput);
-// };

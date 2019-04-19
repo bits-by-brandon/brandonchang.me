@@ -1,7 +1,7 @@
 import PQueue from 'p-queue';
 import ProgramManager from "../programs/ProgramManager";
 import {delay} from "../utility/utils";
-import {queueLine, queueLines} from "../utility/queueLines";
+import {queueLines} from "../utility/queueLines";
 import * as ga from 'react-ga';
 import parseArgs from "../utility/parseArgs";
 import {Dispatch} from "redux";
@@ -60,10 +60,10 @@ function consoleClose(): Action<ConsoleActionType> {
 }
 
 // Overloaded function signatures
-function consoleOutput(message: Output[]): Action<ConsoleActionType, string>
-function consoleOutput(message: Output): Action<ConsoleActionType, string>
-function consoleOutput(message: any): Action<ConsoleActionType, string>{
-  return {type: ConsoleActionType.CONSOLE_OUTPUT, payload: message}
+function consoleOutput(output: Output[]): Action<ConsoleActionType, string>
+function consoleOutput(output: Output): Action<ConsoleActionType, string>
+function consoleOutput(output: any): Action<ConsoleActionType, string>{
+  return {type: ConsoleActionType.CONSOLE_OUTPUT, payload: output}
 }
 
 function consoleNewLine(): Action<ConsoleActionType> {
@@ -186,21 +186,21 @@ const inputQueue = new PQueue({
  * @returns {Function}
  * @param lines
  */
-export function OutputMultiple(lines: Output[]): (dispatch: Dispatch) => void {
-  return dispatch => {
-
-    // Clear any user input
-    dispatch(inputClear());
-
-    // Add lines to the queue for typing
-    queueLines(lines, inputQueue, (line: Output) => {
-      dispatch(consoleOutput(line))
-    }, 200);
-
-    // Wait a second before adding the input command
-    inputQueue.add(() => delay(200));
-
-    // Submit the input command
-    // inputQueue.add(() => dispatch(consoleSubmit()));
-  }
-}
+// export function OutputMultiple(lines: Output[]): (dispatch: Dispatch) => void {
+//   return dispatch => {
+//
+//     // Clear any user input
+//     dispatch(inputClear());
+//
+//     // Add lines to the queue for typing
+//     queueLines(lines, inputQueue, (line: Output) => {
+//       dispatch(consoleOutput(line))
+//     }, 200);
+//
+//     // Wait a second before adding the input command
+//     inputQueue.add(() => delay(200));
+//
+//     // Submit the input command
+//     // inputQueue.add(() => dispatch(consoleSubmit()));
+//   }
+// }

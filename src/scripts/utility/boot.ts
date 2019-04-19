@@ -1,8 +1,9 @@
 import {actionCreators} from "../actions/console";
 import {delay} from "./utils";
-import OutputStatusLine, {LINE_STATUS} from "../models/OutputStatusLine";
+import OutputStatusLine from "../models/OutputStatusLine";
 import {Dispatch} from "redux";
 import {Output, OutputType} from "../types/Output";
+import VirtualConsole from "../models/VirtualConsole";
 
 const {consoleClear, consoleSetInitialText, consoleSetScreen, consoleSetState} = actionCreators;
 
@@ -12,42 +13,40 @@ startupSound.volume = 0.2;
 export default function boot() {
   return async (dispatch: Dispatch) => {
 
-    let console: Output[] = [];
-
-    dispatch(consoleSetState('booting'));
+    let virtualConsole = new VirtualConsole();
 
     startupSound.play();
-    console.push({style: [OutputType.STANDARD], output: 'INITIALIZING BOOT SEQUENCE...'});
-    console.push({style: [OutputType.STANDARD], output: ' '});
+    virtualConsole.addOutput({output: 'INITIALIZING BOOT SEQUENCE...'});
+    virtualConsole.addOutput({output: ' '});
     dispatch(consoleSetScreen(console));
 
     await delay(1100);
-    console.push({style: [OutputType.STANDARD], output: 'flybyBIOS -- v6.23 --'});
-    console.push({style: [OutputType.STANDARD], output: 'Copyright (C) 2018 - 2019, Crowbar studios, INC.'});
-    console.push({style: [OutputType.STANDARD], output: ' '});
+    virtualConsole.addOutput({output: 'flybyBIOS -- v6.23 --'});
+    virtualConsole.addOutput({output: 'Copyright (C) 2018 - 2019, Crowbar studios, INC.'});
+    virtualConsole.addOutput({output: ' '});
     dispatch(consoleSetScreen(console));
 
     await delay(1700);
-    console.push({style: [OutputType.STANDARD], output: '[      ] Running system check...'});
+    virtualConsole.addOutput({output: '[      ] Running system check...'});
     dispatch(consoleSetScreen(console));
 
     await delay(900);
-    console.push({style: [OutputType.STANDARD], output: 'Main Processor: AMG 23Mhz'});
+    virtualConsole.addOutput({output: 'Main Processor: AMG 23Mhz'});
     dispatch(consoleSetScreen(console));
 
     await delay(720);
-    console.push({style: [OutputType.STANDARD], output: 'Memory Testing: 640k'});
-    console.push({style: [OutputType.STANDARD], output: ' '});
+    virtualConsole.addOutput({output: 'Memory Testing: 640k'});
+    virtualConsole.addOutput({output: ' '});
     dispatch(consoleSetScreen(console));
 
     await delay(250);
-    console.push({style: [OutputType.STANDARD], output: 'Storage Testing: 16 Mhz, Quad Channel mode'});
+    virtualConsole.addOutput({output: 'Storage Testing: 16 Mhz, Quad Channel mode'});
     dispatch(consoleSetScreen(console));
 
     await delay(550);
-    console.push({style: [OutputType.STANDARD], output: '   Primary Master: BDC VC2300: 3.2MB'});
-    console.push({style: [OutputType.STANDARD], output: '   Primary Slave: EMPTY'});
-    console.push({style: [OutputType.STANDARD], output: ' '});
+    virtualConsole.addOutput({output: '   Primary Master: BDC VC2300: 3.2MB'});
+    virtualConsole.addOutput({output: '   Primary Slave: EMPTY'});
+    virtualConsole.addOutput({output: ' '});
     dispatch(consoleSetScreen(console));
 
     await delay(200);
@@ -85,11 +84,11 @@ export default function boot() {
     dispatch(consoleSetScreen(console));
 
     await delay(400);
-    console.push({style: [OutputType.STANDARD], output: 'react mount'});
+    virtualConsole.addOutput({output: 'react mount'});
     dispatch(consoleSetScreen(console));
 
     await delay(300);
-    console.push({style: [OutputType.STANDARD], output: 'node_modules transfer size 6.75 GB'});
+    virtualConsole.addOutput({output: 'node_modules transfer size 6.75 GB'});
     dispatch(consoleSetScreen(console));
 
     await delay(100);
@@ -97,7 +96,7 @@ export default function boot() {
     dispatch(consoleSetScreen(console));
 
     await delay(200);
-    console.push({style: [OutputType.STANDARD], output: 'humor module'});
+    virtualConsole.addOutput({output: 'humor module'});
     dispatch(consoleSetScreen(console));
 
     await delay(100);
@@ -113,19 +112,19 @@ export default function boot() {
     dispatch(consoleSetScreen(console));
 
     await delay(200);
-    console.push({style: [OutputType.STANDARD], output: ' '});
-    console.push({style: [OutputType.STANDARD], output: ' '});
-    console.push({style: [OutputType.STANDARD], output: ' '});
-    console.push({style: [OutputType.STANDARD], output: 'Press DEL to enter SETUP    ; press Alt + F4 to quit'});
-    console.push({style: [OutputType.STANDARD], output: '03/01/1993 BDC-PPP-1.5'});
+    virtualConsole.addOutput({output: ' '});
+    virtualConsole.addOutput({output: ' '});
+    virtualConsole.addOutput({output: ' '});
+    virtualConsole.addOutput({output: 'Press DEL to enter SETUP    ; press Alt + F4 to quit'});
+    virtualConsole.addOutput({output: '03/01/1993 BDC-PPP-1.5'});
     dispatch(consoleSetScreen(console));
 
     await delay(500);
     dispatch(consoleSetScreen(console));
 
     await delay(200);
-    console.push({style: [OutputType.STANDARD], output: ' '});
-    console.push({style: [OutputType.STANDARD], output: 'Loading GUI...'});
+    virtualConsole.addOutput({output: ' '});
+    virtualConsole.addOutput({output: 'Loading GUI...'});
     dispatch(consoleSetScreen(console));
 
     await delay(2000);

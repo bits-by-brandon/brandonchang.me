@@ -5,6 +5,7 @@ const work = new Program('work',
   {
     type: ProgramType.PRINT_OUTPUT,
     responses: [
+      ' ',
       '<a href="http://fieldmuseum.org" target="_blank">Field Museum</a>',
       'Lead developer and motion designer for the redesigned',
       'Field Museum website. Created re-usable, configurable',

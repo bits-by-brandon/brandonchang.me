@@ -6,6 +6,6 @@ export enum OutputType {
 }
 
 export interface Output {
-  style: OutputType[],
+  style?: OutputType[],
   output: string
 }
