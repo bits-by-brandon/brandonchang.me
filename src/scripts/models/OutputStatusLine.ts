@@ -38,12 +38,7 @@ class OutputStatusLine implements Output {
       // Calculate the progress bar based on progress
       let bar = '';
       for (let i = 0; i < 6; i++) {
-        // bar += (progress / 100 * 6 < i) ? ' ' : '=';
         bar += (i >= Math.floor(progress * 7 / 100)) ? ' ' : '=';
-        /**
-         *    p   =  i
-         *   100     6
-         */
       }
       return '[' + bar + ']';
     } else {

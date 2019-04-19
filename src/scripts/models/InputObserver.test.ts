@@ -43,3 +43,31 @@ it('emits events to multiple subscriptions', () => {
   expect(subscription1.mock.calls.length).toBe(2);
   expect(subscription2.mock.calls.length).toBe(2);
 });
+
+it('returns an unsubscribe function', () => {
+  const inputObserver = new InputObserver();
+  const subscription1 = jest.fn();
+  const subscription2 = jest.fn();
+  const preventDefaultMock = jest.fn();
+  const unsubscribe1 = inputObserver.subscribe(subscription1);
+  const unsubscribe2 = inputObserver.subscribe(subscription2);
+
+  // First event should fire
+  inputObserver.event({key: 'h', metaKey: false, ctrlKey: false, preventDefault: preventDefaultMock} as any as KeyboardEvent, 'h');
+  expect(subscription1.mock.calls.length).toBe(1);
+  expect(subscription2.mock.calls.length).toBe(1);
+
+  unsubscribe1();
+
+  // Second event should not be fired to subscription1
+  inputObserver.event({key: 'i', metaKey: false, ctrlKey: false, preventDefault: preventDefaultMock} as any as KeyboardEvent, 'hi');
+  expect(subscription1.mock.calls.length).toBe(1);
+  expect(subscription2.mock.calls.length).toBe(2);
+
+  unsubscribe2();
+
+  // Third event should not be fired to either subscription
+  inputObserver.event({key: 'i', metaKey: false, ctrlKey: false, preventDefault: preventDefaultMock} as any as KeyboardEvent, 'hi');
+  expect(subscription1.mock.calls.length).toBe(1);
+  expect(subscription2.mock.calls.length).toBe(2);
+});

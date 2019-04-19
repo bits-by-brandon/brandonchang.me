@@ -1,9 +1,10 @@
 import IConsoleRenderable from "../interfaces/IConsoleRenderable";
 import {Output} from "../types/Output";
-import IObservable from "../interfaces/IObservable";
+import IObservable, {Subscription, Unsubscription} from "../interfaces/IObservable";
 
 export default class VirtualConsole implements IConsoleRenderable, IObservable {
   private readonly output: Output[];
+  private subscriptions: Map<Subscription, Unsubscription>;
 
   constructor(output?: Output[] | Output) {
     // automatically wrap output in array if passed without array
@@ -14,7 +15,21 @@ export default class VirtualConsole implements IConsoleRenderable, IObservable {
     }
   }
 
-  subscribe<T>(subscription: T): () => void {
+  notify() {
+    this.subscriptions.forEach((unsubscription, subscription) => subscription(this.output));
+  }
+
+  /**
+   * Accepts a function that will be called with an Action every time an event occurs
+   */
+  subscribe(subscription: Subscription): Unsubscription {
+    const unsubscribe = () => {
+      this.subscriptions.delete(subscription);
+    };
+
+    this.subscriptions.set(subscription, unsubscribe);
+
+    return unsubscribe;
   }
 
   addOutput(output: Output | Output[], index: number = this.output.length): void {
