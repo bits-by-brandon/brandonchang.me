@@ -1,10 +1,10 @@
-import {actionCreators, ConsoleAction} from "../actions/console";
-import {AnyAction, Dispatch} from "redux";
+import {actionCreators} from "../actions/console";
+import {AnyAction} from "redux";
 import IObservable, {Subscription, Unsubscription} from "../interfaces/IObservable";
 
 const {consoleClose, consoleDelete, consoleDown, consoleInput, consoleSubmit, consoleUp, inputClear} = actionCreators;
 
-export class InputObserver<Action> implements IObservable {
+export default class InputObserver implements IObservable {
   private subscriptions: Map<Subscription, Unsubscription>;
 
   constructor() {
@@ -28,7 +28,7 @@ export class InputObserver<Action> implements IObservable {
     return unsubscribe;
   }
 
-  event(event: KeyboardEvent, input: string): void {
+  keyboardEvent(event: KeyboardEvent, input: string): void {
     let key = event.key.toLowerCase();
 
     if (event.ctrlKey) {
@@ -87,12 +87,3 @@ export class InputObserver<Action> implements IObservable {
     }
   }
 }
-
-const inputObserver = new InputObserver();
-
-export class InputObserverHelper {
-  static getInputObserver() {
-    return inputObserver;
-  }
-}
-

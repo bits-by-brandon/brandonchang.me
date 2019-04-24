@@ -1,20 +1,17 @@
-import {Dispatch} from "redux";
 import IExecutable from "./IExecutable";
-
-export interface ProgramCallback {
-  (args: string[], dispatch: Dispatch): void;
-}
+import IInteractive from "./IInteractive";
 
 export enum ProgramType {
   PRINT_OUTPUT,
   STREAM_CONSOLE,
   CLEAR_CONSOLE,
   EXIT_CONSOLE,
+  INTERACTIVE,
   HELP,
 }
 
-export default interface IProgram extends IExecutable {
-  getHelpText(): any;
+export default interface IProgram extends IExecutable, IInteractive {
+  getHelpText(): string;
 
   getResponses(): any;
 
@@ -22,6 +19,6 @@ export default interface IProgram extends IExecutable {
 
   getAliases(): any;
 
-  getCommandType(): any;
+  getCommandType(): ProgramType;
 }
 

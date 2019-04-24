@@ -1,5 +1,4 @@
 import PQueue from 'p-queue';
-import ProgramManager from "../programs/ProgramManager";
 import {delay} from "../utility/utils";
 import {queueLines} from "../utility/queueLines";
 import * as ga from 'react-ga';

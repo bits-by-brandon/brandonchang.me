@@ -1,4 +1,4 @@
-import {Dispatch} from "redux";
+import {AnyAction, Dispatch} from "redux";
 import IProgram, {ProgramType} from "../interfaces/IProgram";
 import {actionCreators} from "../actions/console";
 import {OutputType} from "../types/Output";
@@ -52,13 +52,19 @@ export default class Program implements IProgram {
     return this._type;
   }
 
+  sendInput(action: AnyAction) {
+  }
+
+  terminate() {
+  }
+
   /**
    * Runs the program, allowing it to dispatch its own actions
    *
    * @param args - Arguments passed in to the program
    * @param dispatch
    */
-  run(args: string[], dispatch: Dispatch): void {
+  run(args: string[], dispatch: Dispatch) {
     if (this._callback) {
       this._callback(args, dispatch);
     }

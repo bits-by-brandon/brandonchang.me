@@ -1,4 +1,5 @@
 import IProgram from "./IProgram";
+import IInteractive from "./IInteractive";
 
 export default interface IProgramManager {
   registerProgram(program: IProgram): void;
@@ -9,5 +10,5 @@ export default interface IProgramManager {
 
   getPrograms(): IProgram[];
 
-  getActiveProgram(): IProgram | null;
+  getActiveProgram(): IInteractive | null;
 }
