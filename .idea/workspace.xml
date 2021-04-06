@@ -5,32 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0be054b-9489-4d7a-8e03-85beebac14e2" name="Default Changelist" comment="Revert &quot;Removed public dir, moved dev dependencies&quot;&#10;&#10;This reverts commit 4655581d">
-      <change afterPath="$PROJECT_DIR$/src/pages/_app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.example.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/entry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/background/entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/background/entry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/background/scenes/asciiEco.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/background/scenes/asciiEco.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/container/Repl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/container/Repl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/ConsoleLine.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/ConsoleLine.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/Frame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/Frame.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/Menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/Repl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/Repl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/WorkItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/WorkItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/WorkList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/WorkList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/programs/help.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/programs/help.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/store/configureStore.dev.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/store/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/store/configureStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/utility/boot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/utility/boot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.prod.js" beforeDir="false" />
     </list>
     <list id="ab547a59-c3ae-419a-b0a9-6d93e5e53582" name="Redux refactor" comment="" />
     <list id="76cdfcc9-41b2-4ee5-afe0-cba78be533d9" name="Revert &quot;Removed public dir, moved dev dependencies&quot;" comment="Revert &quot;Removed public dir, moved dev dependencies&quot;&#10;&#10;This reverts commit 4655581d" />
