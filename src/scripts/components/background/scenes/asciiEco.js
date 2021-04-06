@@ -5,8 +5,8 @@ let grid = [];
 let monospace;
 let frame = 100000;
 let canvasSize = new p5.Vector(1000, 350);
-// let canvasSize = new p5.Vector(window.innerWidth, window.innerHeight);
-const sketch = p => {
+
+export const sketch = p => {
   p.disableFriendlyErrors = true;
   p.Vector = p5.Vector;
 
@@ -50,5 +50,6 @@ const sketch = p => {
   }
 };
 
-// Listen to control change message on all channels
-window.P5 = new p5(sketch);
+export default function init() {
+  window.P5 = new p5(sketch);
+}

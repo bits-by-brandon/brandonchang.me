@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import 'Styles/components/menu.scss';
 import MenuItem from "../container/MenuItem";
 
 const Menu = ({consoleState, menuItems, currentCommand}) => {

@@ -1,10 +1,8 @@
-import {consoleClear, consoleSetInitialText, consoleSetScreen, consoleSetState} from "../actions/console";
+import {consoleClear, consoleSetInitialText, consoleSetScreen, consoleSetState} from "@/actions/console";
 import {delay} from "./utils";
 import OutputLine from "../models/OutputLine";
 import OutputStatusLine, {LINE_STATUS} from "../models/OutputStatusLine";
 
-const startupSound = document.getElementById('startupSound');
-startupSound.volume = 0.2;
 
 const renderScreen = console => {
   const output = console.map(outputLine => outputLine.getOutput());
@@ -12,6 +10,9 @@ const renderScreen = console => {
 };
 
 export default function boot() {
+  const startupSound = document.getElementById('startupSound');
+  startupSound.volume = 0.2;
+
   return async dispatch => {
 
     let console = [];

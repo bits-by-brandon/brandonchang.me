@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import 'Styles/components/repl.scss';
-import 'Styles/components/frame.scss';
 import ConsoleLine from './ConsoleLine';
 import * as equal from 'fast-deep-equal';
 

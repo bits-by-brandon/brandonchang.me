@@ -3,10 +3,9 @@ import classnames from 'classnames';
 import * as ga from 'react-ga';
 
 import '../background/entry';
-import 'Styles/components/canvas.scss';
-import 'Styles/app.scss';
 import Menu from "../container/Menu";
 import Repl from "../container/Repl";
+import Background from "@/components/background/entry";
 
 ga.initialize('UA-62431523-1', {debug: process.env.NODE_ENV !== 'production', testMode: process.env.NODE_ENV !== 'production'});
 ga.pageview('/boot');
@@ -20,6 +19,7 @@ class App extends Component {
     return (
       <div className={classnames("main", this.props.consoleState)}>
         <div className={classnames("load-overlay", this.props.consoleState)}/>
+        <Background />
         <Repl/>
         <Menu
           menuItems={[

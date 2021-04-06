@@ -1,10 +1,10 @@
 import Program from "../models/Program";
-import {ProgramType} from "../interfaces/IProgram";
-import {OutputType} from "../models/ConsoleOutput";
+import {ProgramType} from "@/interfaces/IProgram";
+import {OutputType} from "@/models/ConsoleOutput";
 import {ProgramManagerHelper} from "./ProgramManager";
-import {consoleNewLine, consoleOutput} from "../actions/console";
-import {store} from '../../entry';
+import {consoleNewLine, consoleOutput} from "@/actions/console";
 import formatTab from "../utility/formatTab";
+import {store} from "../../pages/_app";
 
 export default new Program('help', {
     type: ProgramType.HELP,

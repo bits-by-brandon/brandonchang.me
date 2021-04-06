@@ -3,7 +3,6 @@
 
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import 'Styles/components/sidebar.scss';
 
 class sidebar extends Component {
     render() {

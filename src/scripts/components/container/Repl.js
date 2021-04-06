@@ -6,7 +6,7 @@ import {
   consoleDown,
   consoleDelete,
   toggleHideCursor, consoleRunCommand, consoleClose, consoleClear, inputClear
-} from '../../actions/console';
+} from '@/actions/console';
 import Repl from '../presentation/Repl';
 import boot from '../../utility/boot';
 import * as ga from 'react-ga';

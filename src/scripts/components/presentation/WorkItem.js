@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import 'Styles/components/work-item.scss';
 
 class workItem extends Component {
 

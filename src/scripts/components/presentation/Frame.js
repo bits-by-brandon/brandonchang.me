@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Repl from '../container/Repl';
-import 'Styles/components/frame.scss';
 
 class Frame extends Component {
     constructor(props) {

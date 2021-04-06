@@ -1,141 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e0be054b-9489-4d7a-8e03-85beebac14e2" name="Default Changelist" comment="Revert &quot;Removed public dir, moved dev dependencies&quot;&#10;&#10;This reverts commit 4655581d">
+      <change afterPath="$PROJECT_DIR$/src/pages/_app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/actions/console.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/actions/console.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/entry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/entry.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/Ascii.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/Ascii.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/Dot.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/Dot.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/Fluid.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/Fluid.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/Mover.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/Mover.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/MoverCircle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/MoverCircle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/VectorLine.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/VectorLine.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/Walker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/Walker.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/forces/Wind.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/models/forces/Wind.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/scenes/asciiEco.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/scenes/asciiEco.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/scenes/dotField.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/scenes/dotField.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/scenes/shapeGenerator.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/background/scenes/shapeGenerator.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/container/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/container/App.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/container/Frame.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/container/Frame.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/container/Menu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/container/Menu.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/container/MenuItem.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/container/MenuItem.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/container/Repl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/container/Repl.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/container/Root.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/container/Root.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/App.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/ConsoleLine.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/ConsoleLine.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/Frame.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/Frame.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/Menu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/Menu.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/MenuItem.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/MenuItem.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/Repl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/Repl.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/Sidebar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/Sidebar.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/WorkItem.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/WorkItem.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/WorkList.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/components/presentation/WorkList.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/interfaces/IInteractive.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/interfaces/IInteractive.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/interfaces/IProgram.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/interfaces/IProgram.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/models/InteractiveProgram.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/models/InteractiveProgram.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/models/OutputLine.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/models/OutputLine.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/models/OutputLine.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/models/OutputLine.test.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/models/OutputStatusLine.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/models/OutputStatusLine.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/models/OutputStatusLine.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/models/OutputStatusLine.test.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/models/Program.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/models/Program.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/ProgramManager.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/ProgramManager.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/about.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/about.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/changePrompt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/changePrompt.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/clear.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/clear.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/contact.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/contact.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/echo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/echo.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/exit.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/exit.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/hello.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/hello.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/help.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/help.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/index.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/man.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/man.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/sandwich.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/sandwich.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/skills.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/skills.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/work.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/programs/work.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/reducers/commands.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/reducers/commands.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/reducers/console.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/reducers/console.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/reducers/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/reducers/index.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/store/configureStore.dev.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/store/configureStore.dev.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/store/configureStore.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/store/configureStore.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/store/configureStore.prod.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/store/configureStore.prod.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/utility/boot.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/utility/boot.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/utility/dotGrid.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/utility/dotGrid.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/utility/frameScroll.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/utility/frameScroll.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/utility/grid.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/utility/grid.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/utility/queueLines.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/utility/queueLines.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/utility/utils.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scripts/utility/utils.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.example.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/entry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/background/entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/background/entry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/background/scenes/asciiEco.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/background/scenes/asciiEco.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/container/Repl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/container/Repl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/ConsoleLine.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/ConsoleLine.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/Frame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/Frame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/Menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/Repl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/Repl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/WorkItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/WorkItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/presentation/WorkList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/presentation/WorkList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/programs/help.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/programs/help.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/store/configureStore.dev.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/store/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/store/configureStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/utility/boot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/utility/boot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.prod.js" beforeDir="false" />
     </list>
     <list id="ab547a59-c3ae-419a-b0a9-6d93e5e53582" name="Redux refactor" comment="" />
     <list id="76cdfcc9-41b2-4ee5-afe0-cba78be533d9" name="Revert &quot;Removed public dir, moved dev dependencies&quot;" comment="Revert &quot;Removed public dir, moved dev dependencies&quot;&#10;&#10;This reverts commit 4655581d" />
-    <ignored path="$PROJECT_DIR$/.idea/shelf/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -150,124 +55,6 @@
     </option>
     <expand />
     <select />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scripts/actions/console.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="152" column="6" selection-start-line="152" selection-start-column="6" selection-end-line="152" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scripts/programs/man.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#54#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/scripts/programs/contact.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scripts/programs/about.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scripts/programs/work.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="7" selection-start-column="7" selection-end-column="7" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scripts/programs/skills.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scripts/programs/ProgramManager.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scripts/interfaces/IProgramManager.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scripts/interfaces/IProgram.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scripts/interfaces/IExecutable.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -307,6 +94,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -376,14 +171,15 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="PhpServers">
-    <servers />
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="h2ozmbib" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1680" />
     <option name="height" value="1027" />
   </component>
+  <component name="ProjectId" id="1qlrQDxETblcU4372XX0wu69Vd1" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <autoscrollFromSource ProjectPane="true" />
@@ -409,12 +205,17 @@
       <pane id="Scope" />
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="11.6.0" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/scripts/programs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -423,47 +224,35 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
-    <property name="node.js.selected.package.tslint" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/jest" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/scripts/programs" />
+      <recent name="$PROJECT_DIR$/public/fonts" />
+      <recent name="$PROJECT_DIR$/src/scripts/components/background" />
+      <recent name="$PROJECT_DIR$/public/media" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/scripts" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/public/assets/scripts" />
       <recent name="$PROJECT_DIR$/src/scripts/models" />
-      <recent name="$PROJECT_DIR$/src/scripts/components/presentation" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="$PROJECT_DIR$/src/scripts/interfaces/IProgramManager.ts" />
       <recent name="$PROJECT_DIR$/src/scripts/models/OutputStatusLine.js" />
       <recent name="$PROJECT_DIR$/src/scripts/programs/index.js" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/scripts/programs" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/public/fonts" />
-      <recent name="$PROJECT_DIR$/src/scripts/components/background" />
-      <recent name="$PROJECT_DIR$/public/media" />
-    </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Jest.tabs with correct spacing">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -542,12 +331,12 @@
     <list>
       <item itemvalue="Jest.All Tests" />
       <item itemvalue="Jest.Watch All Tests" />
+      <item itemvalue="Jest.tabs with correct spacing" />
       <item itemvalue="Node.js.Node Local" />
       <item itemvalue="npm.dev" />
       <item itemvalue="npm.test" />
       <item itemvalue="npm.deploy" />
       <item itemvalue="npm.deploy:S3" />
-      <item itemvalue="Jest.tabs with correct spacing" />
     </list>
     <recent_temporary>
       <list>
@@ -559,6 +348,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -693,29 +483,14 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -734,9 +509,9 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
     <MESSAGE value="Removes node_modules directory" />
     <MESSAGE value="Redux refactor" />
     <MESSAGE value="Revert &quot;Removed public dir, moved dev dependencies&quot;&#10;&#10;This reverts commit 4655581d" />
