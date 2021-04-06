@@ -1,24 +1,29 @@
-import React from 'react';
-import {connect} from 'react-redux'
+import React from "react";
+import { connect } from "react-redux";
 import {
   consoleInput,
   consoleUp,
   consoleDown,
   consoleDelete,
-  toggleHideCursor, consoleRunCommand, consoleClose, consoleClear, inputClear
-} from '@/actions/console';
-import Repl from '../presentation/Repl';
-import boot from '../../utility/boot';
-import * as ga from 'react-ga';
+  toggleHideCursor,
+  consoleRunCommand,
+  consoleClose,
+  consoleClear,
+  inputClear
+} from "@/actions/console";
+import Repl from "../presentation/Repl";
+import boot from "../../utility/boot";
+import * as ga from "react-ga";
 
-const cursorBlink = (blinkRate, dispatch) => setInterval(() => {
-  dispatch(toggleHideCursor());
-}, blinkRate);
+const cursorBlink = (blinkRate, dispatch) =>
+  setInterval(() => {
+    dispatch(toggleHideCursor());
+  }, blinkRate);
 
 const mapKeyToAction = (event, input, dispatch) => {
   let key = event.key.toLowerCase();
 
-  if(event.ctrlKey) {
+  if (event.ctrlKey) {
     switch (key) {
       case "c":
         dispatch(inputClear());
@@ -87,10 +92,9 @@ const mapKeyToAction = (event, input, dispatch) => {
 };
 
 const mapBootKeyToAction = (event, dispatch) => {
-  if (event.key.toLowerCase() === 'enter') {
-
+  if (event.key.toLowerCase() === "enter") {
     // Register boot event in Google Analytics
-    ga.pageview('/');
+    ga.pageview("/");
 
     dispatch(boot());
   }

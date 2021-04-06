@@ -1,5 +1,5 @@
 import Program from "../models/Program";
-import {ProgramType} from "../interfaces/IProgram";
+import {ProgramType} from "@/interfaces/IProgram";
 
 const work = new Program('work',
   {

@@ -4,15 +4,14 @@ import {OutputType} from "@/models/ConsoleOutput";
 import {ProgramManagerHelper} from "./ProgramManager";
 import {consoleNewLine, consoleOutput} from "@/actions/console";
 import formatTab from "../utility/formatTab";
-import {store} from "../../pages/_app";
 
 export default new Program('help', {
     type: ProgramType.HELP,
     aliases: ['menu']
-  }, (args, dispatch) => {
+  }, (args, dispatch, store) => {
     const programManager = ProgramManagerHelper.getProgramManager();
     const tabSpace = store.getState().console.tabSpace;
-    console.log(tabSpace);
+
     let output = programManager
       .getPrograms()
       .filter(program => program.getHelpText())

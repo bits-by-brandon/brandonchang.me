@@ -1,13 +1,14 @@
-import {Dispatch} from "redux";
-import IProgram, {ProgramType} from "../interfaces/IProgram";
-import {consoleNewLine, consoleOutput} from "../actions/console";
-import {ConsoleOutput, OutputType} from "./ConsoleOutput";
+import { Dispatch } from "redux";
+
+import IProgram, { ProgramType } from "../interfaces/IProgram";
+import { consoleNewLine, consoleOutput } from "@/actions/console";
+import { OutputType } from "./ConsoleOutput";
 
 export interface ProgramOptions {
-  type?: ProgramType,
-  responses?: string[],
-  helpText?: string,
-  aliases?: string[]
+  type?: ProgramType;
+  responses?: string[];
+  helpText?: string;
+  aliases?: string[];
 }
 
 export default class Program implements IProgram {
@@ -16,11 +17,14 @@ export default class Program implements IProgram {
   protected _type: ProgramType;
   protected _responses?: string[];
   protected _aliases?: string[];
-  protected _callback?: (args?: string[], dispatch?: Dispatch) => void;
+  protected _callback?: (args?: string[], dispatch?: Dispatch, store?: any) => void;
 
-  constructor(programName: string, options: ProgramOptions, callback?: (args?: string[], dispatch?: Dispatch) => void) {
-
-    const {responses, helpText, aliases = [], type} = options;
+  constructor(
+    programName: string,
+    options: ProgramOptions,
+    callback?: (args?: string[], dispatch?: Dispatch, store?: any) => void
+  ) {
+    const { responses, helpText, aliases = [], type } = options;
 
     this._programName = programName;
     this._aliases = aliases.concat(programName);
@@ -55,10 +59,11 @@ export default class Program implements IProgram {
    *
    * @param args - Arguments passed in to the program
    * @param dispatch
+   * @param store
    */
-  run(args: string[], dispatch: Dispatch): void {
+  run(args: string[], dispatch: Dispatch, store?: any): void {
     if (this._callback) {
-      this._callback(args, dispatch);
+      this._callback(args, dispatch, store);
     }
     if (this._responses && this._responses.length > 0) {
       Program.printResponse(this._responses, dispatch);
@@ -73,6 +78,10 @@ export default class Program implements IProgram {
    * @param dispatch
    */
   static printResponse(responses: string[], dispatch: Dispatch) {
-    dispatch(consoleOutput(responses.map(r => ({style: [OutputType.STANDARD], output: r}))));
+    dispatch(
+      consoleOutput(
+        responses.map(r => ({ style: [OutputType.STANDARD], output: r }))
+      )
+    );
   }
 }

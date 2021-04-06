@@ -1,5 +1,5 @@
 import Program, {ProgramOptions} from "./Program";
-import {ProgramCallback, ProgramType} from "../interfaces/IProgram";
+import {ProgramCallback, ProgramType} from "@/interfaces/IProgram";
 
 class InteractiveProgram extends Program {
   private _callBack: ProgramCallback;

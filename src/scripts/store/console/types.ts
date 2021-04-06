@@ -1,5 +1,4 @@
-import {ProgramType} from "../../interfaces/IProgram";
-import {ConsoleOutput, OutputType} from "../../models/ConsoleOutput";
+import {ConsoleOutput} from "@/models/ConsoleOutput";
 
 export const CONSOLE_INPUT = 'CONSOLE_INPUT';
 export const CONSOLE_UP = 'CONSOLE_UP';

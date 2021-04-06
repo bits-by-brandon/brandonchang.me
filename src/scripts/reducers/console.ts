@@ -17,7 +17,7 @@ import {
   CONSOLE_SET_SCREEN,
   CONSOLE_SET_STATE,
   CONSOLE_SET_INITIAL_TEXT, CONSOLE_NEWLINE,
-} from "../store/console/types";
+} from "@/store/console/types";
 
 const defaultState: ConsoleState = {
   inputHistory: [],
@@ -40,10 +40,14 @@ export default function console(state = defaultState, action: ConsoleAction): Co
   switch (action.type) {
 
     case CONSOLE_UP: {
+      window.console.log(state.inputHistory)
+      if (state.inputHistory.length === 0) return state;
+
       const nextIndex = Math.min(
         state.inputHistoryIndex + 1,
         state.inputHistory.length
       );
+
       return {
         ...state,
         inputHistoryIndex: nextIndex,
@@ -52,9 +56,8 @@ export default function console(state = defaultState, action: ConsoleAction): Co
     }
 
     case CONSOLE_DOWN: {
-      if (state.inputHistoryIndex === 0) {
-        return;
-      }
+      window.console.log(state.inputHistory)
+      if (state.inputHistoryIndex === 0) return state;
       const nextIndex = Math.max(state.inputHistoryIndex - 1, 1);
       return {
         ...state,
@@ -78,13 +81,12 @@ export default function console(state = defaultState, action: ConsoleAction): Co
 
     case CONSOLE_SUBMIT:
       // Return last state if there is no user input
-      if (state.userInput.length === 0) {
-        return state
-      }
+      if (state.userInput.length === 0) return state
 
       return {
         ...state,
         userInput: '',
+        inputHistory: [...state.inputHistory, state.userInput],
         console: state.console.concat({style: [OutputType.INPUT], output: state.userInput}),
         consoleVisible: true
       };

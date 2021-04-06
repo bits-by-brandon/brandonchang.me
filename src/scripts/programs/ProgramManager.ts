@@ -13,7 +13,7 @@ import work from './work';
 import man from './man';
 
 class ProgramManager implements IProgramManager {
-  private programs: IProgram[];
+  private readonly programs: IProgram[];
 
   constructor(initialPrograms?: IProgram[]) {
     this.programs = initialPrograms || [];
