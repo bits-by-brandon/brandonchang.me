@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0be054b-9489-4d7a-8e03-85beebac14e2" name="Default Changelist" comment="Revert &quot;Removed public dir, moved dev dependencies&quot;&#10;&#10;This reverts commit 4655581d">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/actions/console.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/actions/console.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/container/Repl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/container/Repl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/interfaces/IExecutable.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/interfaces/IExecutable.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/models/InteractiveProgram.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/models/InteractiveProgram.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/models/Program.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/models/Program.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/programs/ProgramManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/programs/ProgramManager.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/programs/help.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/programs/help.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/programs/man.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/programs/man.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/programs/skills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/programs/skills.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/programs/work.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/programs/work.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/reducers/console.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/reducers/console.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/reducers/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/store/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/store/configureStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/store/console/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/store/console/types.ts" afterDir="false" />
     </list>
     <list id="ab547a59-c3ae-419a-b0a9-6d93e5e53582" name="Redux refactor" comment="" />
     <list id="76cdfcc9-41b2-4ee5-afe0-cba78be533d9" name="Revert &quot;Removed public dir, moved dev dependencies&quot;" comment="Revert &quot;Removed public dir, moved dev dependencies&quot;&#10;&#10;This reverts commit 4655581d" />

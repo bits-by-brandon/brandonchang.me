@@ -86,6 +86,7 @@ export default function console(state = defaultState, action: ConsoleAction): Co
       return {
         ...state,
         userInput: '',
+        inputHistoryIndex: 0,
         inputHistory: [...state.inputHistory, state.userInput],
         console: state.console.concat({style: [OutputType.INPUT], output: state.userInput}),
         consoleVisible: true
