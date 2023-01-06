@@ -19,7 +19,7 @@
     "aws-sdk": "^2.437.0",
     "css-loader": "^2.1.1",
     "hoist-non-react-statics": "^3.3.0",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.5.0",
     "jest": "^24.7.1",
     "mime-types": "^2.1.22",
     "ts-jest": "^24.0.2",
